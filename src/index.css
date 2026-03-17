@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-primary:      #23A6F0;   /* Mavi — butonlar, linkler */
+  --color-primary-dark: #2A7CC7;   /* Hover durumu */
+  --color-secondary:    #23856D;   /* Yeşil — fiyat, badge */
+
+  /* Text */
+  --color-text-primary:   #252B42; /* Koyu lacivert — başlıklar */
+  --color-text-secondary: #737373; /* Gri — açıklamalar */
+  --color-text-light:     #BDBDBD; /* Açık gri — placeholder */
+  --color-text-muted:     #858585; /* Orta gri */
+
+  /* Background */
+  --color-bg:       #FFFFFF; /* Ana arka plan */
+  --color-bg-light: #FAFAFA; /* Section arka planları */
+  --color-bg-gray:  #F5F5F5; /* Kart arka planları */
+
+  /* Status / Ürün */
+  --color-success:  #2DC071; /* Yeşil — stok, onay */
+  --color-warning:  #E77C40; /* Turuncu — dikkat */
+  --color-danger:   #E74040; /* Kırmızı — hata, indirim */
+  --color-sale:     #E74040; /* İndirim fiyatı */
+  --color-old-price:#BDBDBD; /* Üstü çizili eski fiyat */
+
+  /* Navbar */
+  --color-topbar-bg:   #252B42; /* Üst bar arka plan */
+  --color-topbar-text: #FFFFFF; /* Üst bar yazı */
+
+  /* Footer */
+  --color-footer-text: #FFFFFF;
+
+  /* Border */
+  --color-border: #E6E6E6;
+
+  /* Font */
+  --font-sans: "Montserrat", sans-serif;
+}
