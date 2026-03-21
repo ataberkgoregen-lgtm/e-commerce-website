@@ -1,3 +1,16 @@
+import mediaCover from "./photos/media bg-cover.svg";
+import colMd from "./photos/filter (1).svg";
+import mediaCover1 from "./photos/media bg-cover (1).svg";
+import filter from "./photos/filter.svg";
+import pr1 from "./photos/product-cover-5.svg";
+import pr2 from "./photos/fixed-height.svg";
+import pr3 from "./photos/product-cover-5 (1).svg";
+import pr4 from "./photos/fixed-height (1).svg";
+import pr5 from "./photos/product-cover-5 (2).svg";
+import pr6 from "./photos/fixed-height (2).svg";
+import pr7 from "./photos/fixed-height (3).svg";
+import pr8 from "./photos/fixed-height (4).svg";
+
 export const data = {
   // ----- CONTACT -----
   contact: {
@@ -21,8 +34,9 @@ export const data = {
     {
       id: 1,
       season: "SUMMER 2020",
-      title: "New Collection",
-      description: "We know how large objects will act, but things on a small scale.",
+      title: "NEW COLLECTION",
+      description:
+        "We know how large objects will act, but things on a small scale.",
       cta: { label: "SHOP NOW", path: "/shop" },
       image: "/images/hero/slide-1.jpg",
     },
@@ -30,7 +44,8 @@ export const data = {
       id: 2,
       season: "SUMMER 2020",
       title: "Vita Classic Product",
-      description: "We know how large objects will act, We know how are objects will act, We know",
+      description:
+        "We know how large objects will act, We know how are objects will act, We know",
       price: 16.48,
       cta: { label: "ADD TO CART" },
       image: "/images/hero/slide-2.jpg",
@@ -39,7 +54,8 @@ export const data = {
       id: 3,
       season: "SUMMER 2020",
       title: "Part of the Neural Universe",
-      description: "We know how large objects will act, but things on a small scale.",
+      description:
+        "We know how large objects will act, but things on a small scale.",
       cta: [
         { label: "BUY NOW", path: "/shop" },
         { label: "READ MORE", path: "/about" },
@@ -53,10 +69,10 @@ export const data = {
     heading: "EDITOR'S PICK",
     subheading: "Problems trying to resolve the conflict between",
     categories: [
-      { id: 1, label: "MEN",         image: "/images/editors/men.jpg" },
-      { id: 2, label: "WOMEN",       image: "/images/editors/women.jpg" },
-      { id: 3, label: "ACCESSORIES", image: "/images/editors/accessories.jpg" },
-      { id: 4, label: "KIDS",        image: "/images/editors/kids.jpg" },
+      { id: 1, label: "MEN", image: mediaCover },
+      { id: 2, label: "WOMEN", image: colMd },
+      { id: 3, label: "ACCESSORIES", image: mediaCover1 },
+      { id: 4, label: "KIDS", image: filter },
     ],
   },
 
@@ -69,7 +85,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-1.jpg",
+      image: pr1,
     },
     {
       id: 2,
@@ -78,7 +94,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-2.jpg",
+      image: pr2,
     },
     {
       id: 3,
@@ -87,7 +103,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-3.jpg",
+      image: pr3,
     },
     {
       id: 4,
@@ -96,7 +112,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-4.jpg",
+      image: pr4,
     },
     {
       id: 5,
@@ -105,7 +121,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-5.jpg",
+      image: pr5,
     },
     {
       id: 6,
@@ -114,7 +130,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-6.jpg",
+      image: pr6,
     },
     {
       id: 7,
@@ -123,7 +139,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-7.jpg",
+      image: pr7,
     },
     {
       id: 8,
@@ -132,7 +148,7 @@ export const data = {
       originalPrice: 16.48,
       salePrice: 6.48,
       colors: ["#23A6F0", "#23856D", "#E77C40", "#252B42"],
-      image: "/images/products/product-8.jpg",
+      image: pr8,
     },
   ],
 
@@ -178,45 +194,45 @@ export const data = {
     brand: "Bandage",
     tagline: "Made With Love By Finland All Right Reserved",
     socials: [
-      { label: "Facebook",  icon: "facebook",  url: "#" },
+      { label: "Facebook", icon: "facebook", url: "#" },
       { label: "Instagram", icon: "instagram", url: "#" },
-      { label: "Twitter",   icon: "twitter",   url: "#" },
+      { label: "Twitter", icon: "twitter", url: "#" },
     ],
     columns: [
       {
         heading: "Company Info",
         links: [
-          { label: "About Us",      path: "/about" },
-          { label: "Carrier",       path: "/carrier" },
+          { label: "About Us", path: "/about" },
+          { label: "Carrier", path: "/carrier" },
           { label: "We are hiring", path: "/careers" },
-          { label: "Blog",          path: "/blog" },
+          { label: "Blog", path: "/blog" },
         ],
       },
       {
         heading: "Legal",
         links: [
-          { label: "About Us",      path: "/legal/about" },
-          { label: "Carrier",       path: "/legal/carrier" },
+          { label: "About Us", path: "/legal/about" },
+          { label: "Carrier", path: "/legal/carrier" },
           { label: "We are hiring", path: "/legal/hiring" },
-          { label: "Blog",          path: "/legal/blog" },
+          { label: "Blog", path: "/legal/blog" },
         ],
       },
       {
         heading: "Features",
         links: [
           { label: "Business Marketing", path: "/features/marketing" },
-          { label: "User Analytics",     path: "/features/analytics" },
-          { label: "Live Chat",          path: "/features/live-chat" },
-          { label: "Unlimited Support",  path: "/features/support" },
+          { label: "User Analytics", path: "/features/analytics" },
+          { label: "Live Chat", path: "/features/live-chat" },
+          { label: "Unlimited Support", path: "/features/support" },
         ],
       },
       {
         heading: "Resources",
         links: [
           { label: "IOS & Android", path: "/resources/mobile" },
-          { label: "Watch a Demo",  path: "/resources/demo" },
-          { label: "Customers",     path: "/resources/customers" },
-          { label: "API",           path: "/resources/api" },
+          { label: "Watch a Demo", path: "/resources/demo" },
+          { label: "Customers", path: "/resources/customers" },
+          { label: "API", path: "/resources/api" },
         ],
       },
     ],

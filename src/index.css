@@ -16,7 +16,7 @@
   --color-bg:       #FFFFFF; /* Ana arka plan */
   --color-bg-light: #FAFAFA; /* Section arka planları */
   --color-bg-gray:  #F5F5F5; /* Kart arka planları */
-
+  --color-bg-green: #2DC071;
   /* Status / Ürün */
   --color-success:  #2DC071; /* Yeşil — stok, onay */
   --color-warning:  #E77C40; /* Turuncu — dikkat */
