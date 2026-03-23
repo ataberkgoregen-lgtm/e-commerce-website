@@ -10,7 +10,10 @@ import pr5 from "./photos/product-cover-5 (2).svg";
 import pr6 from "./photos/fixed-height (2).svg";
 import pr7 from "./photos/fixed-height (3).svg";
 import pr8 from "./photos/fixed-height (4).svg";
-
+import blog1 from "./photos/unsplash_tVEqStC2uz8.svg";
+import blog2 from "./photos/unsplash_hHdHCfAifHU.svg";
+import blog3 from "./photos/unsplash_dEGu-oCuB1Y.svg";
+import hero from "./photos/shop-hero-2-png-picture-1.svg";
 export const data = {
   // ----- CONTACT -----
   contact: {
@@ -38,7 +41,7 @@ export const data = {
       description:
         "We know how large objects will act, but things on a small scale.",
       cta: { label: "SHOP NOW", path: "/shop" },
-      image: "/images/hero/slide-1.jpg",
+      image: hero,
     },
     {
       id: 2,
@@ -48,7 +51,7 @@ export const data = {
         "We know how large objects will act, We know how are objects will act, We know",
       price: 16.48,
       cta: { label: "ADD TO CART" },
-      image: "/images/hero/slide-2.jpg",
+      image: hero,
     },
     {
       id: 3,
@@ -60,7 +63,7 @@ export const data = {
         { label: "BUY NOW", path: "/shop" },
         { label: "READ MORE", path: "/about" },
       ],
-      image: "/images/hero/slide-3.jpg",
+      image: hero,
     },
   ],
 
@@ -162,7 +165,7 @@ export const data = {
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
-      image: "/images/blog/post-1.jpg",
+      image: blog1,
       path: "/blog/loudest-1",
     },
     {
@@ -173,7 +176,7 @@ export const data = {
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
-      image: "/images/blog/post-2.jpg",
+      image: blog2,
       path: "/blog/loudest-2",
     },
     {
@@ -184,7 +187,7 @@ export const data = {
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
-      image: "/images/blog/post-3.jpg",
+      image: blog3,
       path: "/blog/loudest-3",
     },
   ],

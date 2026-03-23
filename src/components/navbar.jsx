@@ -47,10 +47,10 @@ export function Navbar() {
           </a>
         </div>
       </div>
-      <div className="h-[58px] flex flex-row justify-between mt-3 mb-2">
+      <div className="h-[58px] flex flex-row justify-between mt-3 mb-2 flex-wrap">
         <div className="flex flex-row gap-[119px] items-center">
           <h3 className="font-bold pl-9.5 text-2xl">Bandage</h3>
-          <div className="flex flex-row gap-[15px] text-text-secondary text-sm font-semibold">
+          <div className="flex flex-row gap-[15px] text-text-secondary text-sm font-semibold flex-wrap">
             {navLink.map((item) => {
               if (item.label === "Shop") {
                 return (
@@ -112,7 +112,7 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-7.5 pr-7.5 items-center text-primary">
+        <div className="flex flex-row gap-7.5 pr-7.5 items-center text-primary flex-wrap">
           <div className="flex flex-row gap-1.5 font-medium">
             <User />
             <a href="">Login</a> / <a href="">Register</a>

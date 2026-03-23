@@ -18,8 +18,7 @@ export default function HeroSlider2() {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden h-[716px] bg-secondary">
-      {/* Slides */}
+    <div className="relative w-full mx-auto overflow-hidden h-[716px] bg-secondary sm:h-fit">
       <div
         className="flex transition-transform duration-500 w-full h-full"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -27,10 +26,10 @@ export default function HeroSlider2() {
         {heroSlide.map((slide, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-full h-full relative bg-secondary flex items-center"
+            className="flex-shrink-0 w-full h-full relative bg-secondary flex items-center xl:flex-nowrap flex-wrap justify-center "
           >
             {/* Yazı — sol taraf */}
-            <div className="ml-[5%] text-white z-10 pl-[8%] w-1/2">
+            <div className="md:ml-[5%] text-white z-10 xl:pl-[8%] w-1/2 ">
               <p className="text-base font-semibold pb-[35px]">
                 {slide.season}
               </p>
@@ -46,14 +45,14 @@ export default function HeroSlider2() {
               </div>
             </div>
 
-            {/* Resim — sağ taraf */}
-            {slides.map((src, index) => (
+            {/* Resim — sağ taraf: sadece bu slide'ın resmi */}
+            <div className="w-full md:w-1/2 h-[250px] md:h-full flex items-end justify-center overflow-hidden ">
               <img
-                key={index}
-                src={src}
-                className="absolute right-65 bottom-0 w-auto object-contain" // ✅ w-full ekle
+                src={slide.image}
+                alt={slide.title}
+                className="h-full w-auto object-contain object-bottom"
               />
-            ))}
+            </div>
           </div>
         ))}
       </div>
@@ -61,7 +60,7 @@ export default function HeroSlider2() {
       {/* Left Button */}
       <button
         onClick={prevSlide}
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pl-[30px]  font-light"
+        className="absolute left-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pl-[30px] font-light"
       >
         ‹
       </button>
@@ -69,18 +68,18 @@ export default function HeroSlider2() {
       {/* Right Button */}
       <button
         onClick={nextSlide}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pr-[30px]  font-light"
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pr-[30px] font-light"
       >
         ›
       </button>
 
       {/* Dots */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex pb-6 gap-0.5">
-        {slides.map((_, i) => (
+        {heroSlide.map((_, i) => (
           <div
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-13 h-2 cursor-pointer  ${
+            className={`w-13 h-2 cursor-pointer ${
               current === i ? "bg-white" : "bg-white/50"
             }`}
           />
