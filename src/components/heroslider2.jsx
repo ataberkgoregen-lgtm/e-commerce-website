@@ -18,39 +18,39 @@ export default function HeroSlider2() {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden h-[716px] bg-secondary sm:h-fit">
+    <div className="relative w-full mx-auto overflow-hidden sm:h-[716px] h-auto bg-secondary sm:h-fit ">
       <div
-        className="flex transition-transform duration-500 w-full h-full"
+        className="flex transition-transform duration-500 w-full h-full "
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {heroSlide.map((slide, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-full h-full relative bg-secondary flex items-center xl:flex-nowrap flex-wrap justify-center "
+            className="flex-shrink-0 w-full h-full relative bg-secondary flex text-center items-center xl:flex-nowrap flex-wrap justify-center"
           >
             {/* Yazı — sol taraf */}
-            <div className="md:ml-[5%] text-white z-10 xl:pl-[8%] w-1/2 ">
+            <div className="sm:ml-[5%] text-white z-10 xl:pl-[8%] sm:w-1/2 sm:text-left text-center mt-10 sm:mt-0 px-0 sm:px-0">
               <p className="text-base font-semibold pb-[35px]">
                 {slide.season}
               </p>
-              <p className="text-6xl font-semibold pb-[35px] w-90">
+              <p className="text-4xl sm:text-5xl md:text-6xl font-semibold pb-[35px] sm:w-90">
                 {slide.title}
               </p>
-              <p className="pb-[35px] w-120 text-xl">{slide.description}</p>
-              <div className="flex flex-row items-center gap-8 font-bold text-2xl">
+              <p className="pb-[35px] sm:w-120 text-xl">{slide.description}</p>
+              <div className="flex flex-col sm:flex-row items-center text-center gap-8 font-bold text-2xl ">
                 {slide.price && <p>${slide.price}</p>}
-                <button className="bg-bg-green px-10 py-3.5 rounded-md text-2xl cursor-pointer font-semibold">
+                <button className="bg-bg-green px-10 py-3.5 m-auto sm:m-0 rounded-sm text-2xl cursor-pointer font-semibold">
                   {slide.cta.label}
                 </button>
               </div>
             </div>
 
             {/* Resim — sağ taraf: sadece bu slide'ın resmi */}
-            <div className="w-full md:w-1/2 h-[250px] md:h-full flex items-end justify-center overflow-hidden ">
+            <div className="w-full sm:w-1/2 sm:h-full flex items-start justify-center overflow-hidden pt-7 max-w-[500px] xl:max-w-[600px]">
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="h-full w-auto object-contain object-bottom"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function HeroSlider2() {
       {/* Left Button */}
       <button
         onClick={prevSlide}
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pl-[30px] font-light"
+        className="absolute left-0 bottom-[520px] sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 text-[100px] text-white px-3 pl-[30px] font-light"
       >
         ‹
       </button>
@@ -68,13 +68,13 @@ export default function HeroSlider2() {
       {/* Right Button */}
       <button
         onClick={nextSlide}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-[100px] text-white px-3 pr-[30px] font-light"
+        className="absolute right-0 bottom-[520px] sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 text-[100px] text-white px-3 pr-[30px] font-light"
       >
         ›
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex pb-6 gap-0.5">
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 hidden sm:flex pb-6 gap-0.5">
         {heroSlide.map((_, i) => (
           <div
             key={i}
