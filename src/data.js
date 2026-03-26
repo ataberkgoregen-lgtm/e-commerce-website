@@ -29,7 +29,7 @@ export const data = {
     { label: "About", path: "/about" },
     { label: "Blog", path: "/blog" },
     { label: "Contact", path: "/contact" },
-    { label: "Pages", path: "/pages" },
+    { label: "Pages", path: "/products" },
   ],
 
   // ----- HERO SLIDER -----

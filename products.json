@@ -1,0 +1,332 @@
+{
+  "total": 36,
+  "page": 1,
+  "pageSize": 12,
+  "totalPages": 3,
+  "products": [
+    {
+      "id": 1,
+      "title": "Hooded Jacket",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 2,
+      "title": "Grey Sweater",
+      "department": "Women's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 3,
+      "title": "Yellow Cardigan",
+      "department": "Women's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 4,
+      "title": "Printed Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 5,
+      "title": "White Jacket",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1544441893-675973e31985?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 6,
+      "title": "Yellow Vest",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1604644401890-0bd678c83788?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 7,
+      "title": "Floral Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1602810319428-019690571b5b?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 8,
+      "title": "Salmon Bodysuit",
+      "department": "Women's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 9,
+      "title": "Green Windbreaker",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 10,
+      "title": "Pink Hoodie",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 11,
+      "title": "Navy Floral Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 12,
+      "title": "Brown Leather Jacket",
+      "department": "Women's Clothing",
+      "originalPrice": 16.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 13,
+      "title": "Classic Denim Jacket",
+      "department": "Men's Clothing",
+      "originalPrice": 22.48,
+      "salePrice": 10.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 14,
+      "title": "Striped T-Shirt",
+      "department": "Women's Clothing",
+      "originalPrice": 12.48,
+      "salePrice": 5.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 15,
+      "title": "Wool Coat",
+      "department": "Women's Clothing",
+      "originalPrice": 32.48,
+      "salePrice": 18.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 16,
+      "title": "Cargo Pants",
+      "department": "Men's Clothing",
+      "originalPrice": 18.48,
+      "salePrice": 8.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 17,
+      "title": "Turtleneck Sweater",
+      "department": "Women's Clothing",
+      "originalPrice": 20.48,
+      "salePrice": 9.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1604176354204-9268737828e4?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 18,
+      "title": "Bomber Jacket",
+      "department": "Men's Clothing",
+      "originalPrice": 24.48,
+      "salePrice": 12.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 19,
+      "title": "Linen Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 14.48,
+      "salePrice": 7.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 20,
+      "title": "Midi Skirt",
+      "department": "Women's Clothing",
+      "originalPrice": 15.48,
+      "salePrice": 7.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1583496661160-fb5218afa9a7?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 21,
+      "title": "Leather Biker Jacket",
+      "department": "Women's Clothing",
+      "originalPrice": 42.48,
+      "salePrice": 22.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 22,
+      "title": "Oversized Hoodie",
+      "department": "Unisex",
+      "originalPrice": 19.48,
+      "salePrice": 9.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 23,
+      "title": "Pleated Trousers",
+      "department": "Men's Clothing",
+      "originalPrice": 21.48,
+      "salePrice": 11.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 24,
+      "title": "Wrap Dress",
+      "department": "Women's Clothing",
+      "originalPrice": 25.48,
+      "salePrice": 13.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 25,
+      "title": "Puffer Vest",
+      "department": "Unisex",
+      "originalPrice": 17.48,
+      "salePrice": 8.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1547153760-18fc86324498?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 26,
+      "title": "Slim Fit Chinos",
+      "department": "Men's Clothing",
+      "originalPrice": 18.48,
+      "salePrice": 9.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 27,
+      "title": "Flare Jeans",
+      "department": "Women's Clothing",
+      "originalPrice": 23.48,
+      "salePrice": 11.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 28,
+      "title": "Knit Cardigan",
+      "department": "Women's Clothing",
+      "originalPrice": 19.48,
+      "salePrice": 9.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 29,
+      "title": "Denim Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 15.48,
+      "salePrice": 7.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 30,
+      "title": "Maxi Dress",
+      "department": "Women's Clothing",
+      "originalPrice": 28.48,
+      "salePrice": 14.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 31,
+      "title": "Track Jacket",
+      "department": "Unisex",
+      "originalPrice": 20.48,
+      "salePrice": 10.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 32,
+      "title": "Corduroy Pants",
+      "department": "Men's Clothing",
+      "originalPrice": 22.48,
+      "salePrice": 11.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1555689502-c4b22d76c56f?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 33,
+      "title": "Blazer Jacket",
+      "department": "Women's Clothing",
+      "originalPrice": 35.48,
+      "salePrice": 19.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1551803091-e20673f15770?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 34,
+      "title": "Graphic Tee",
+      "department": "Unisex",
+      "originalPrice": 12.48,
+      "salePrice": 5.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 35,
+      "title": "Trench Coat",
+      "department": "Women's Clothing",
+      "originalPrice": 45.48,
+      "salePrice": 25.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1520975916090-3105956dac38?w=300&h=350&fit=crop"
+    },
+    {
+      "id": 36,
+      "title": "Polo Shirt",
+      "department": "Men's Clothing",
+      "originalPrice": 14.48,
+      "salePrice": 6.48,
+      "colors": ["#23A6F0", "#E77C40", "#23856D", "#252B42"],
+      "image": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=300&h=350&fit=crop"
+    }
+  ]
+}
