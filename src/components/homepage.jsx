@@ -26,11 +26,6 @@ export default function Homepage() {
       <div className="w-3/5 m-auto">
         <Blogs></Blogs>
       </div>
-      <div className="w-full  bg-bg-light">
-        <div className="w-3/5 m-auto">
-          <SocialMedias />
-        </div>
-      </div>
     </div>
   );
 }
