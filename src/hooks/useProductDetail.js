@@ -11,7 +11,7 @@ const useProductDetail = (productId) => {
       const { data } = await axios.get("/products.json");
       return data.products.find((p) => String(p.id) === String(productId));
     },
-    // Burası "Sihirli" kısım: Shop sayfasındaki veriyi anında kullanmamızı sağlar
+    // Shop sayfasındaki veriyi anında kullanmamızı sağlar
     initialData: () => {
       // "products" anahtarıyla çekilmiş tüm sayfaları cache'den al
       const allQueriesData = queryClient.getQueriesData({

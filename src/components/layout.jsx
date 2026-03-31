@@ -1,11 +1,18 @@
+import { useLocation } from "react-router-dom";
 import { Navbar } from "./navbar";
 import Footer from "./footer";
 import SocialMedias from "./socialmeadias";
 export default function Layout({ children }) {
+  const location = useLocation();
+
+  const isShopPage = location.pathname.includes("shop");
+
   return (
     <>
       <Navbar />
+
       <main>{children}</main>
+
       {/* Footer Aşağıda */}
       <div className="w-full  bg-bg-light">
         <div className="w-3/5 m-auto">

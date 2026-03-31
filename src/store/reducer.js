@@ -32,6 +32,7 @@ export const initialState = {
   editorsPick: data.editorsPick,
   footer: data.footer,
 
+  shop: data.shop,
   // API gelene kadar data.js'den beslenir
   products: {
     list: data.products,

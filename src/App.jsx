@@ -12,7 +12,7 @@ const App = () => {
             <Homepage></Homepage>
           </Layout>
         </Route>
-        <Route path="/products">
+        <Route path="/shop">
           <Layout>
             <ShopPage></ShopPage>
           </Layout>
