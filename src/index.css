@@ -1,5 +1,9 @@
+
 @import "tailwindcss";
 
+/* Theme değişkenlerin zaten tanımlı */
+
+/* Tailwind base layer ile body fontu */
 @theme {
   /* Brand */
   --color-primary:      #23A6F0;   /* Mavi — butonlar, linkler */
@@ -36,4 +40,11 @@
 
   /* Font */
   --font-sans: "Montserrat", sans-serif;
+  --default-font-family: "Montserrat", sans-serif;
+}
+
+@layer base {
+  html, body {
+    font-family: "Montserrat", sans-serif !important;
+  }
 }

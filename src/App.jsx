@@ -3,6 +3,7 @@ import Layout from "./components/layout";
 import Homepage from "./components/homepage";
 import ShopPage from "./components/products";
 import ProductDetailPage from "./components/ProductDetailPage";
+import Contact from "./components/contact";
 const App = () => {
   return (
     <BrowserRouter>
@@ -11,6 +12,9 @@ const App = () => {
           <Layout>
             <Homepage></Homepage>
           </Layout>
+        </Route>
+        <Route path="/contact">
+          <Contact></Contact>
         </Route>
         <Route path="/shop">
           <Layout>
