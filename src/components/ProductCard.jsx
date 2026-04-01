@@ -1,15 +1,17 @@
 import { useHistory } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, layout }) => {
   const history = useHistory();
 
   return (
     <div
       onClick={() => history.push(`/product/${product.id}`)}
-      className="cursor-pointer group"
+      className={`cursor-pointer group flex ${layout ? " flex-col" : "flex-row"} `}
     >
       {/* Görsel */}
-      <div className="overflow-hidden bg-bg-gray">
+      <div
+        className={`overflow-hidden bg-bg-gray ${layout ? "w-full" : "w-3/4 mr-5"}`}
+      >
         <img
           src={product.image}
           alt={product.title}
@@ -18,7 +20,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Bilgiler */}
-      <div className="text-center py-4">
+      <div className={`text-center py-4 ${layout ? "w-full" : "w-50"}`}>
         <h3 className="font-bold text-text-primary">{product.title}</h3>
         <p className="text-text-secondary text-sm mt-1">{product.department}</p>
 

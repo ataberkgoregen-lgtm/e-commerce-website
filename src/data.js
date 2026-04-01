@@ -14,20 +14,20 @@ import blog1 from "./photos/unsplash_tVEqStC2uz8.svg";
 import blog2 from "./photos/unsplash_hHdHCfAifHU.svg";
 import blog3 from "./photos/unsplash_dEGu-oCuB1Y.svg";
 import hero from "./photos/shop-hero-2-png-picture-1.svg";
-import shop1 from "/public/card-cover-5.svg";
-import shop2 from "/public/card-cover-6.svg";
-import shop3 from "/public/card-cover-7.svg";
-import shop4 from "/public/card-cover-4.svg";
-import shop5 from "/public/card-cover-3.svg";
+import shop1 from "/card-cover-5.svg";
+import shop2 from "/card-cover-6.svg";
+import shop3 from "/card-cover-7.svg";
+import shop4 from "/card-cover-4.svg";
+import shop5 from "/card-cover-3.svg";
 
 export const data = {
   // ----- SHOP ------
   shop: [
-    { head: "CLOTHS", text: "5 Items", image: shop1 },
-    { head: "CLOTHS", text: "5 Items", image: shop2 },
-    { head: "CLOTHS", text: "5 Items", image: shop3 },
-    { head: "CLOTHS", text: "5 Items", image: shop4 },
-    { head: "CLOTHS", text: "5 Items", image: shop5 },
+    { head: "CLOTHS", text: "5 Items", image: "/card-cover-5.svg" },
+    { head: "CLOTHS", text: "5 Items", image: "/card-cover-6.svg" },
+    { head: "CLOTHS", text: "5 Items", image: "/card-cover-7.svg" },
+    { head: "CLOTHS", text: "5 Items", image: "/card-cover-4.svg" },
+    { head: "CLOTHS", text: "5 Items", image: "/card-cover-3.svg" },
   ],
   // ----- CONTACT -----
   contact: {
