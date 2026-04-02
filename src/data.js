@@ -206,6 +206,75 @@ export const data = {
     },
   ],
 
+  blogPage: [
+    {
+      id: 1,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog1,
+      path: "/blog/loudest-1",
+    },
+    {
+      id: 2,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog2,
+      path: "/blog/loudest-2",
+    },
+    {
+      id: 3,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog3,
+      path: "/blog/loudest-3",
+    },
+    {
+      id: 1,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog1,
+      path: "/blog/loudest-1",
+    },
+    {
+      id: 2,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog2,
+      path: "/blog/loudest-2",
+    },
+    {
+      id: 3,
+      title: "Loudest à la Madison #1 (L'integral)",
+      excerpt:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      date: "22 April 2021",
+      comments: 10,
+      tags: ["Google", "Trending", "New"],
+      image: blog3,
+      path: "/blog/loudest-3",
+    },
+  ],
+
   // ----- FOOTER -----
   footer: {
     brand: "Bandage",

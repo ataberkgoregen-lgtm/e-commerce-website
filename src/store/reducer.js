@@ -49,6 +49,11 @@ export const initialState = {
     loading: false,
     error: null,
   },
+  blogPage: {
+    list: data.blogPage,
+    loading: false,
+    error: null,
+  },
 
   // Kullanıcı
   user: {

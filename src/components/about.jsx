@@ -130,7 +130,7 @@ export default function About() {
           <img src="/Vector (5).svg" alt="" />
         </div>
       </div>
-      <div className="w-full flex flex-row justify-between bg-primary text-white flex-wrap gap-10 md:flex-nowrap pt-10">
+      <div className="w-full flex flex-row justify-between bg-primary text-white flex-wrap gap-10 md:flex-nowrap pt-10 md:pt-0">
         <div className="w-full flex justify-center items-center px-5">
           <div className="flex flex-col gap-10 items-start">
             <h5 className="font-bold">WORK WITH US</h5>

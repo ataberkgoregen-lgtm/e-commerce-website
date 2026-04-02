@@ -5,6 +5,7 @@ import ShopPage from "./components/products";
 import ProductDetailPage from "./components/ProductDetailPage";
 import Contact from "./components/contact";
 import About from "./components/about";
+import BlogPage from "./components/blog";
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,11 @@ const App = () => {
         </Route>
         <Route path="/contact">
           <Contact></Contact>
+        </Route>
+        <Route path="/blog">
+          <Layout>
+            <BlogPage></BlogPage>
+          </Layout>
         </Route>
         <Route path="/about">
           <Layout>

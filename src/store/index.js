@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 import { thunk } from "redux-thunk";
 import { reducer, initialState } from "./reducer";
 
@@ -8,12 +9,13 @@ import { reducer, initialState } from "./reducer";
 export const myStore = createStore(
   reducer,
   initialState,
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, logger),
 );
 
 // ============================================================
 // THUNK ACTION CREATORS  (async — API çağrıları buraya gelir)
 // ============================================================
+
 import {
   setProducts,
   setBestSeller,
