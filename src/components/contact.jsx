@@ -18,8 +18,8 @@ export default function Contact() {
             CONTACT US
           </button>
         </div>
-        <div className="w-full md:w-1/2 flex flex-col gap-20 flex-wrap">
-          <div className="flex flex-row gap-20 flex-wrap">
+        <div className="w-full md:w-1/2 md:m-auto flex flex-col gap-20 flex-wrap">
+          <div className="flex flex-row gap-20 flex-wrap md:flex-nowrap">
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl font-bold">Paris</h3>
               <h4 className="text-[20px]">1901 Thorn ridge Cir. </h4>
@@ -41,7 +41,7 @@ export default function Contact() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-row gap-20 flex-wrap">
+          <div className="flex flex-row gap-20 flex-wrap md:flex-nowrap">
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl font-bold">Berlin</h3>
               <h4 className="text-[20px]">1901 Thorn ridge Cir. </h4>

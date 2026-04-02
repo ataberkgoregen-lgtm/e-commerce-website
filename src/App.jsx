@@ -4,6 +4,7 @@ import Homepage from "./components/homepage";
 import ShopPage from "./components/products";
 import ProductDetailPage from "./components/ProductDetailPage";
 import Contact from "./components/contact";
+import About from "./components/about";
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,11 @@ const App = () => {
         </Route>
         <Route path="/contact">
           <Contact></Contact>
+        </Route>
+        <Route path="/about">
+          <Layout>
+            <About></About>
+          </Layout>
         </Route>
         <Route path="/shop">
           <Layout>
