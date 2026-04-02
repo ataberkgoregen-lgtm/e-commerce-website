@@ -16,7 +16,7 @@ export default function About() {
             </button>
           </div>
           <div className="md:w-1/2  ">
-            <img src="/public/technology 1.svg" alt="" />
+            <img src="/technology 1.svg" alt="" />
           </div>
         </div>
         <div className="flex flex-row text-center sm:text-start justify-between items-center flex-wrap">
@@ -79,7 +79,7 @@ export default function About() {
           </div>
           <div className="flex flex-row gap-4 mb-[120px] flex-wrap md:flex-nowrap">
             <div className="w-full flex flex-col text-center gap-2">
-              <img src="/public/team-1-user-1.svg" alt="" />
+              <img src="/team-1-user-1.svg" alt="" />
               <h5 className="text-base font-bold mt-7">Username</h5>
               <h6>Profession</h6>
               <div className="flex flex-row gap-3 justify-center text-primary ">
@@ -89,7 +89,7 @@ export default function About() {
               </div>
             </div>
             <div className="w-full flex flex-col text-center gap-2">
-              <img src="/public/team-1-user-2.svg" alt="" />
+              <img src="/team-1-user-2.svg" alt="" />
               <h5 className="text-base font-bold mt-7">Username</h5>
               <h6>Profession</h6>
               <div className="flex flex-row gap-3 justify-center text-primary">
@@ -99,7 +99,7 @@ export default function About() {
               </div>
             </div>
             <div className="w-full flex flex-col text-center gap-2">
-              <img src="/public/team-1-user-3.svg" alt="" />
+              <img src="/team-1-user-3.svg" alt="" />
               <h5 className="text-base font-bold mt-7">Username</h5>
               <h6>Profession</h6>
               <div className="flex flex-row gap-3 justify-center text-primary">
@@ -145,7 +145,7 @@ export default function About() {
           </div>
         </div>
         <div className=" overflow-hidden">
-          <img src="/public/unsplash_vjMgqUkS8q8.svg" alt="" />
+          <img src="/unsplash_vjMgqUkS8q8.svg" alt="" />
         </div>
       </div>
     </div>
