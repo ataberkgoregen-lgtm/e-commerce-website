@@ -6,6 +6,7 @@ import ProductDetailPage from "./components/ProductDetailPage";
 import Contact from "./components/contact";
 import About from "./components/about";
 import BlogPage from "./components/blog";
+import Team from "./components/teams.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -21,6 +22,11 @@ const App = () => {
         <Route path="/blog">
           <Layout>
             <BlogPage></BlogPage>
+          </Layout>
+        </Route>
+        <Route path="/team">
+          <Layout>
+            <Team></Team>
           </Layout>
         </Route>
         <Route path="/about">

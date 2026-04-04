@@ -1,5 +1,5 @@
 import { Instagram, Facebook, Twitter } from "lucide-react";
-
+import useProducts from "../hooks/useProducts";
 export default function About() {
   return (
     <div>

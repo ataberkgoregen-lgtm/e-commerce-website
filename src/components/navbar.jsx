@@ -20,11 +20,13 @@ import { useLocation } from "react-router-dom";
 export function Navbar() {
   const navbar = useSelector((store) => store.contact);
   const navLink = useSelector((store) => store.navLinks);
+  const categories = useSelector((store) => store.categories.list);
+  console.log(categories);
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const location = useLocation();
 
-  const hideCampaigne = location.pathname === "/about";
+  const hideCampaigne = location.pathname === "/about" || "team";
 
   return (
     <nav>
@@ -129,32 +131,28 @@ export function Navbar() {
 
                       {shopOpen && (
                         <div className="absolute top-full left-0 mt-2 w-48 rounded-md bg-gray-800 shadow-lg z-50">
-                          <div className="py-1">
-                            <a
-                              href="/shop/men"
-                              className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
-                            >
-                              Men
-                            </a>
-                            <a
-                              href="/shop/women"
-                              className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
-                            >
-                              Women
-                            </a>
-                            <a
-                              href="/shop/kids"
-                              className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
-                            >
-                              Kid
-                            </a>
-                            <a
-                              href="/shop/accessories"
-                              className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
-                            >
-                              Accessories
-                            </a>
-                          </div>
+                          {categories.map(
+                            (
+                              i, // { eklendi
+                            ) => (
+                              <div
+                                key={i.id}
+                                className="py-1 flex flex-row justify-end"
+                              >
+                                <a
+                                  href={"/shop/" + i.label}
+                                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
+                                >
+                                  {i.label}
+                                </a>
+                                <img
+                                  src={i.image}
+                                  alt=""
+                                  className="w-15 h-15"
+                                />
+                              </div>
+                            ),
+                          )}
                         </div>
                       )}
                     </div>

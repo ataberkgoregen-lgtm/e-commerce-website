@@ -43,7 +43,7 @@ export const data = {
     { label: "About", path: "/about" },
     { label: "Blog", path: "/blog" },
     { label: "Contact", path: "/contact" },
-    { label: "Pricing", path: "/products" },
+    { label: "Team", path: "/team" },
   ],
 
   // ----- HERO SLIDER -----

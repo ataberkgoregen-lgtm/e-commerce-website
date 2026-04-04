@@ -1,34 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import api from "../api/axios";
 
-const useProducts = (page = 1, limit = 12) => {
-  return useQuery({
-    queryKey: ["products", page],
-    queryFn: async () => {
-      const { data } = await axios.get("/products.json");
-      console.log("Ham data:", data); // Tam yapıyı gör
-      console.log("Keys:", Object.keys(data));
-      return data;
-    },
-    staleTime: 1000,
-  });
+const getProducts = async () => {
+  const products = await api.get("/products");
+  return products.data;
 };
 
-// const useProducts = (page = 1, limit = 12) => {
-//   return useQuery({
-//     queryKey: ["products", page],
-//     queryFn: async () => {
-//       const { data } = await axios.get("/products.json", {
-//         params: {
-//           page: page,
-//           limit: limit, // Backend bu parametreye göre 12 tane döndürmeli
-//         },
-//       });
-//       return data;
-//     },
-//     // Sayfa geçişlerinde eski veriyi ekranda tutar, "Yükleniyor" sıçramasını önler
-//     staleTime: 1000, // 5 saniye boyunca veriyi taze kabul et
-//   });
-// };
+const useProducts = () => {
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+    staleTime: 1000 * 60,
+  });
+};
 
 export default useProducts;

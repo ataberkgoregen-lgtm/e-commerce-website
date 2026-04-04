@@ -7,10 +7,36 @@ import { useSelector } from "react-redux";
 const ShopPage = () => {
   const [page, setPage] = useState(1);
   const limit = 12;
-  const { data, isLoading, error } = useProducts(page);
   const shopPage = useSelector((item) => item.shop);
   const [layout, setLayout] = useState(true);
+  const { data, isLoading, error } = useProducts();
 
+  const products = data?.products ?? [];
+  const totalPages = Math.ceil(products.length / limit);
+  const visibleProducts = products.slice((page - 1) * limit, page * limit);
+  console.log(visibleProducts);
+
+  const getPageNumbers = (currentPage, totalPages) => {
+    // Toplam sayfa 7 veya altındaysa hepsini göster
+    if (totalPages <= 7) {
+      return [...Array(totalPages)].map((_, i) => i + 1);
+    }
+
+    // Başta her zaman 1 var, sonda her zaman totalPages var
+    // Ortada currentPage etrafında 2 sayfa var
+    const pages = new Set([
+      1,
+      totalPages,
+      currentPage,
+      currentPage - 1,
+      currentPage + 1,
+    ]);
+
+    // Sırala, geçersizleri temizle
+    return [...pages]
+      .filter((p) => p >= 1 && p <= totalPages)
+      .sort((a, b) => a - b);
+  };
   if (isLoading)
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -24,18 +50,6 @@ const ShopPage = () => {
         <p className="text-danger">Hata: {error.message}</p>
       </div>
     );
-
-  if (!data || !Array.isArray(data.products)) {
-    return <p>Ürünler bulunamadı.</p>;
-  }
-
-  const startIndex = (page - 1) * limit;
-  const endIndex = startIndex + limit;
-  const visibleProducts = data.products.slice(startIndex, endIndex);
-
-  // 2. Dinamik Sayfa Sayısı Hesaplama
-  // Toplam ürün sayısını limit'e bölüp yukarı yuvarlıyoruz (Örn: 25/12 = 2.08 -> 3 sayfa)
-  const totalPages = Math.ceil(data.products.length / limit);
 
   return (
     <div className="w-full">
@@ -161,20 +175,31 @@ const ShopPage = () => {
             First
           </button>
 
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setPage(i + 1);
-                window.scrollTo(0, 0);
-              }}
-              className={`px-4 py-2 border cursor-pointer ${
-                page === i + 1 ? "bg-primary text-white" : "text-text-secondary"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {getPageNumbers(page, totalPages).map((pageNum, i, arr) => {
+            // Önceki sayıyla arasında boşluk varsa "..." ekle
+            const showDots = i > 0 && pageNum - arr[i - 1] > 1;
+
+            return (
+              <span key={pageNum} className="flex items-center gap-2">
+                {showDots && (
+                  <span className="px-2 text-text-secondary">...</span>
+                )}
+                <button
+                  onClick={() => {
+                    setPage(pageNum);
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`px-4 py-2 border cursor-pointer ${
+                    page === pageNum
+                      ? "bg-primary text-white"
+                      : "text-text-secondary"
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              </span>
+            );
+          })}
 
           <button
             onClick={() => {

@@ -1,16 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+const getProducts = async () => {
+  const products = await api.get("/products");
+  return products.find((p) => String(p.id) === String(productId));
+};
+
 const useProductDetail = (productId) => {
   const queryClient = useQueryClient();
 
   return useQuery({
     queryKey: ["product", productId],
-    queryFn: async () => {
-      // Sayfa yenilenirse burası çalışır: Tüm listeyi çekip içinden ID'yi buluyoruz
-      const { data } = await axios.get("/products.json");
-      return data.products.find((p) => String(p.id) === String(productId));
-    },
+    queryFn: getProducts,
     // Shop sayfasındaki veriyi anında kullanmamızı sağlar
     initialData: () => {
       // "products" anahtarıyla çekilmiş tüm sayfaları cache'den al

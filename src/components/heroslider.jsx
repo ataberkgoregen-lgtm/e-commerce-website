@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import img1 from "../photos/shop-hero-1-product-slide-1.svg";
 import { useSelector } from "react-redux";
-
+import api from "../api/axios";
 const slides = [img1, img1];
 
 export default function HeroSlider() {

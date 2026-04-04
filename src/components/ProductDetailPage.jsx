@@ -4,11 +4,11 @@ import useProductDetail from "../hooks/useProductDetail";
 const ProductDetailPage = () => {
   const { productId } = useParams();
   const history = useHistory();
-  const { data: product, isLoading, error } = useProductDetail(productId);
+  const { data, isLoading, error } = useProductDetail(productId);
 
   if (isLoading)
     return <div className="flex justify-center py-20">Yükleniyor...</div>;
-  if (error || !product)
+  if (error || !data)
     return (
       <div className="text-center py-20">
         <p className="text-danger">Ürün bulunamadı!</p>
@@ -28,8 +28,8 @@ const ProductDetailPage = () => {
         <div className="w-full md:w-1/2">
           <div className="bg-bg-gray rounded-2xl overflow-hidden shadow-sm">
             <img
-              src={product.image}
-              alt={product.title}
+              src={data.images[0].url}
+              alt={data.name}
               className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -47,19 +47,19 @@ const ProductDetailPage = () => {
           </nav>
 
           <h1 className="text-4xl font-bold text-text-primary leading-tight">
-            {product.title}
+            {data.name}
           </h1>
           <p className="text-xl text-text-secondary mt-2 font-medium">
-            {product.department}
+            {data.description}
           </p>
 
           <div className="flex items-center gap-6 mt-10 p-6 bg-gray-50 rounded-xl border border-gray-100">
             <div className="flex flex-col">
               <span className="text-sm text-text-light line-through font-medium">
-                ${product.originalPrice}
+                ${data.price}
               </span>
               <span className="text-4xl font-extrabold text-secondary">
-                ${product.salePrice}
+                ${data.price}
               </span>
             </div>
             <div className="ml-auto">
@@ -74,13 +74,13 @@ const ProductDetailPage = () => {
               Mevcut Renkler
             </p>
             <div className="flex gap-4 mt-4">
-              {product.colors?.map((color, i) => (
+              {/* {data.colors?.map((color, i) => (
                 <div
                   key={i}
                   className="w-10 h-10 rounded-full border-2 border-white shadow-md ring-1 ring-gray-200 cursor-pointer hover:ring-primary transition-all"
                   style={{ backgroundColor: color }}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
 

@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
-
+import useProducts from "../hooks/useProducts";
 export default function BestSeller() {
-  const products = useSelector((store) => store.products.bestSellers);
+  const { data, isLoading } = useProducts();
+  const products = data?.products ?? [];
+
+  const visibleProducts = products.slice(0, 8);
+  console.log(visibleProducts);
   return (
     <div className="pt-20 text-center">
       <div className="flex flex-col gap-2.5 mb-20">
@@ -17,20 +21,20 @@ export default function BestSeller() {
       </div>
 
       <div className="flex flex-wrap ">
-        {products.map((item) => {
+        {visibleProducts.map((item) => {
           return (
             <div
-              key={item.key}
+              key={item.id}
               className="w-65 pb-20 m-auto flex flex-col justify-center gap-2.5"
             >
-              <img src={item.image} alt="" />
-              <h5 className="font-bold text-text-primary pt-6">{item.title}</h5>
-              <p className="font-bold text-text-secondary">{item.department}</p>
+              <img src={item.images[0].url} alt="" />
+              <h5 className="font-bold text-text-primary pt-6">{item.name}</h5>
+              <p className="font-bold text-text-secondary">
+                {item.description}
+              </p>
               <div className="flex flex-row gap-3 justify-center">
-                <p className="font-bold text-text-light">
-                  ${item.originalPrice}
-                </p>
-                <p className="font-bold text-secondary">${item.salePrice}</p>
+                <p className="font-bold text-text-light">${item.price}</p>
+                <p className="font-bold text-secondary">${item.price}</p>
               </div>
               <div className="flex flex-row justify-center gap-1">
                 <div className="w-[16px] h-[16px] bg-[#23A6F0] rounded-full"></div>

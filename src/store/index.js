@@ -26,21 +26,6 @@ import {
   setError,
 } from "./actions";
 
-// ----- PRODUCTS -----
-export const fetchProducts = () => async (dispatch) => {
-  dispatch(setLoading("products", true));
-  try {
-    const res = await fetch(
-      "https://workintech-fe-ecommerce.onrender.com/products",
-    );
-    const data = await res.json();
-    dispatch(setProducts(data.products));
-    dispatch(setBestSeller(data.products));
-  } catch (err) {
-    dispatch(setError("products", err.message));
-  }
-};
-
 // ----- CATEGORIES -----
 export const fetchCategories = () => async (dispatch) => {
   try {
