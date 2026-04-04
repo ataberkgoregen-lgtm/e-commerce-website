@@ -10,7 +10,7 @@ export default function Team() {
           <h5 className="text-text-secondary font-bold text-base">
             WHAT WE DO
           </h5>
-          <h1 className="text-text-primary text-4xl md:text-6xl font-bold">
+          <h1 className="text-text-primary text-4dxl md:text-6xl font-bold">
             Innovation tailored for you
           </h1>
           <div className="flex flex-row flex-wrap md:flex-nowrap xl:gap-[119px] items-center w-full justify-center">

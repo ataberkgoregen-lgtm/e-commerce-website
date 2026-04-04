@@ -26,7 +26,8 @@ export function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
   const location = useLocation();
 
-  const hideCampaigne = location.pathname === "/about" || "team";
+  const hideCampaigne =
+    location.pathname === "/about" || location.pathname === "/team";
 
   return (
     <nav>
