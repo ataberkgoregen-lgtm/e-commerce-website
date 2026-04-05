@@ -7,9 +7,9 @@ import { useSelector } from "react-redux";
 const ShopPage = () => {
   const [page, setPage] = useState(1);
   const limit = 12;
-  const shopPage = useSelector((item) => item.shop);
+  const shopPage = useSelector((item) => item.reducer.shop);
   const [layout, setLayout] = useState(true);
-  const { data, isLoading, error } = useProducts();
+  const { data, isLoading, isError } = useProducts();
 
   const products = data?.products ?? [];
   const totalPages = Math.ceil(products.length / limit);
@@ -44,10 +44,10 @@ const ShopPage = () => {
       </div>
     );
 
-  if (error)
+  if (isError)
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <p className="text-danger">Hata: {error.message}</p>
+        <p className="text-danger">Hata: {isError.message}</p>
       </div>
     );
 
@@ -72,10 +72,10 @@ const ShopPage = () => {
       <div className="w-3/5 mx-auto px-8 py-12">
         {/* --- FLEX YAPISI --- */}
 
-        <div className="flex flex-row justify-center xl:justify-between pb-12 flex-wrap items-center w-full">
+        <div className="flex flex-row justify-center xl:justify-between pb-12 flex-wrap items-center w-full gap-1 ">
           {shopPage.map((item) => {
             return (
-              <div className="relative">
+              <div className="relative m-auto">
                 <img src={item.image} alt="" className="w-full" />
                 <div className="absolute inset-0 bg-black/30 z-10"></div>
                 <h4 className="absolute top-2/5 left-1/3 text-white font-bold z-20">
@@ -144,18 +144,14 @@ const ShopPage = () => {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col -mx-4 items-center justify-center">
+          <div className="flex flex-col -mx-4 items-center justify-center ">
             {/* -mx-4: Kenarlardaki boşluğu dengelemek için */}
 
             {visibleProducts.map((product) => (
               <div
                 key={product.id}
-                className="w-full items-center justify-center sm:w-1/2 md:w-1/3 lg:w-2/5 px-4 mb-8"
+                className="w-full items-center justify-center  px-4 mb-8 pb-4 border-b-2"
               >
-                {/* w-full: Mobilde 1 tane
-               sm:w-1/2: Küçük ekranlarda 2 tane
-               lg:w-1/4: Geniş ekranlarda 4 tane (12 / 4 = 3 satır oluşur)
-            */}
                 <ProductCard product={product} layout={layout} />
               </div>
             ))}

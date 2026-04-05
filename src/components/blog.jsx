@@ -4,7 +4,7 @@ import { ChartNoAxesCombined } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 
 export default function BlogPage() {
-  const blogs = useSelector((item) => item.blogPage.list);
+  const blogs = useSelector((item) => item.reducer.blogPage);
 
   return (
     <div className="md:py-[112px] text-center py-4 w-3/5 m-auto">

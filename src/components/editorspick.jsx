@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function EditorsPick() {
-  const editors = useSelector((store) => store.editorsPick);
+  const editors = useSelector((store) => store.reducer.editorsPick);
 
   return (
     <div className=" pt-[80px] pb-20">

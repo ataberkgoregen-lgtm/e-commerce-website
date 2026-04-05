@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function Footer() {
-  const footer = useSelector((item) => item.footer);
+  const footer = useSelector((item) => item.reducer.footer);
   return (
     <div className="flex flex-row justify-between flex-wrap mb-14 gap-8">
       {footer.columns.map((item) => {

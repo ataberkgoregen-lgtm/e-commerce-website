@@ -1,0 +1,23 @@
+// ============================================================
+// productReducer.js
+// ============================================================
+import { SET_LIMIT, SET_OFFSET, SET_FILTER } from "./productActions";
+
+const initialProductState = {
+  limit: 36,
+  offset: 0,
+  filter: "",
+};
+
+export const productReducer = (state = initialProductState, action) => {
+  switch (action.type) {
+    case SET_LIMIT:
+      return { ...state, limit: action.payload };
+    case SET_OFFSET:
+      return { ...state, offset: action.payload };
+    case SET_FILTER:
+      return { ...state, filter: action.payload };
+    default:
+      return state;
+  }
+};

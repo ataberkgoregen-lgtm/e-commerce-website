@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import asian from "../photos/asian-woman-man-with-winter-clothes 1.svg";
 
 export default function RandomContent() {
-  const info = useSelector((store) => store.heroSlides[2]);
+  const info = useSelector((store) => store.reducer.heroSlides[2]);
   return (
     <div className="flex flex-row w-full xl:flex-nowrap flex-wrap justify-center items-center mt-[120px] xl:mt-0">
-      <div className="w-full xl:w-auto md:min-w-[700px] min-w-[370px] xl:order-1 order-2">
+      <div className="w-full xl:w-auto md:min-w-[700px] min-w-[260px] m-auto xl:order-1 order-2 m-0 items-center justify-center flex">
         <img src={asian} alt="" className="" />
       </div>
       <div className="w-full flex flex-col xl:text-left text-center justify-center ml-0 2xl:ml-[60px] xl:order-2 order-1">

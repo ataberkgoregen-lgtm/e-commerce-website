@@ -16,11 +16,12 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useCategories } from "../hooks/useCategories";
 
 export function Navbar() {
-  const navbar = useSelector((store) => store.contact);
-  const navLink = useSelector((store) => store.navLinks);
-  const categories = useSelector((store) => store.categories.list);
+  const navbar = useSelector((store) => store.reducer.contact);
+  const navLink = useSelector((store) => store.reducer.navLinks);
+  const { data: categories } = useCategories();
   console.log(categories);
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
@@ -73,7 +74,7 @@ export function Navbar() {
                   <User />{" "}
                 </div>
               )}
-              <a href="" className="font-bold cursor-pointer">
+              <a href="/login" className="font-bold cursor-pointer">
                 Login
               </a>{" "}
               {hideCampaigne && (
@@ -141,13 +142,13 @@ export function Navbar() {
                                 className="py-1 flex flex-row justify-end"
                               >
                                 <a
-                                  href={"/shop/" + i.label}
+                                  href={`/shop/${i.gender}/${i.code}`} // ✅ i.label → i.code
                                   className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
                                 >
-                                  {i.label}
+                                  {i.title} {/* ✅ i.label → i.title */}
                                 </a>
                                 <img
-                                  src={i.image}
+                                  src={i.img} // ✅ i.image → i.img
                                   alt=""
                                   className="w-15 h-15"
                                 />

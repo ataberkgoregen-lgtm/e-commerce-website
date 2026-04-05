@@ -6,7 +6,7 @@ const slides = [img1, img1];
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
-  const heroSlide = useSelector((store) => store.heroSlides);
+  const heroSlide = useSelector((store) => store.reducer.heroSlides);
   const activeSlide = heroSlide[current];
 
   const prevSlide = () =>

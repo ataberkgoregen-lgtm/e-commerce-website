@@ -20,7 +20,7 @@ export default function Homepage() {
         <BestSeller></BestSeller>
       </div>
       <HeroSlider2></HeroSlider2>
-      <div className="w-3/5 m-auto">
+      <div className="md:w-3/5 m-auto">
         <RandomContent></RandomContent>
       </div>
       <div className="w-3/5 m-auto">

@@ -3,7 +3,7 @@ import { AlarmClock } from "lucide-react";
 import { ChartNoAxesCombined } from "lucide-react";
 import { ChevronRight } from "lucide-react";
 export default function Blogs() {
-  const blogs = useSelector((item) => item.blogPosts.list);
+  const blogs = useSelector((item) => item.reducer.blogPosts);
 
   return (
     <div className="pt-[112px] text-center pb-[112px] ">
