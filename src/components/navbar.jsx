@@ -26,7 +26,7 @@ export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
   const navLink = useSelector((store) => store.reducer.navLinks);
   const { data: categories } = useCategories();
-  console.log(categories);
+
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const location = useLocation();
@@ -46,6 +46,7 @@ export function Navbar() {
     toast.success("Başarıyla çıkış yaptınız");
     history.push("/");
   }
+
   return (
     <nav>
       {!hideCampaigne && (
@@ -169,29 +170,49 @@ export function Navbar() {
                       </button>
 
                       {shopOpen && (
-                        <div className="absolute top-full left-0 mt-2 w-48 rounded-md bg-gray-800 shadow-lg z-50">
-                          {categories.map(
-                            (
-                              i, // { eklendi
-                            ) => (
-                              <div
-                                key={i.id}
-                                className="py-1 flex flex-row justify-end"
-                              >
-                                <a
-                                  href={`/shop/${i.gender}/${i.code}`} // ✅ i.label → i.code
-                                  className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
-                                >
-                                  {i.title} {/* ✅ i.label → i.title */}
-                                </a>
-                                <img
-                                  src={i.img} // ✅ i.image → i.img
-                                  alt=""
-                                  className="w-15 h-15"
-                                />
-                              </div>
-                            ),
-                          )}
+                        <div className="absolute top-full left-0 mt-2 w-96 rounded-md bg-white shadow-xl z-50 border border-gray-100 p-4">
+                          <div className="flex flex-row gap-8">
+                            {/* Kadın Sütunu */}
+                            <div className="flex flex-col flex-1">
+                              <h4 className="font-bold text-gray-800 mb-3 pb-1 border-b border-gray-200">
+                                Kadın
+                              </h4>
+                              {categories
+                                .filter((cat) => cat.gender === "k")
+                                .map((cat) => (
+                                  <a
+                                    key={cat.id}
+                                    href={`/shop/${cat.gender}/${cat.code}/${cat.id}`}
+                                    onClick={() => setShopOpen(false)}
+                                    className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
+                                  >
+                                    {cat.title}
+                                  </a>
+                                ))}
+                            </div>
+
+                            {/* Ayraç */}
+                            <div className="w-px bg-gray-200" />
+
+                            {/* Erkek Sütunu */}
+                            <div className="flex flex-col flex-1">
+                              <h4 className="font-bold text-gray-800 mb-3 pb-1 border-b border-gray-200">
+                                Erkek
+                              </h4>
+                              {categories
+                                .filter((cat) => cat.gender === "e")
+                                .map((cat) => (
+                                  <a
+                                    key={cat.id}
+                                    href={`/shop/${cat.gender}/${cat.code}/${cat.id}`}
+                                    onClick={() => setShopOpen(false)}
+                                    className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
+                                  >
+                                    {cat.title}
+                                  </a>
+                                ))}
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>

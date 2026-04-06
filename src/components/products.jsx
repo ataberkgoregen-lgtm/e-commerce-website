@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import { ChevronRight, LayoutGrid, ListChecks } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setCategory } from "../store/productActions";
 
 const ShopPage = () => {
   const [page, setPage] = useState(1);
@@ -12,9 +14,20 @@ const ShopPage = () => {
   const { data, isLoading, isError } = useProducts();
 
   const products = data?.products ?? [];
-  const totalPages = Math.ceil(products.length / limit);
-  const visibleProducts = products.slice((page - 1) * limit, page * limit);
-  console.log(visibleProducts);
+  const total = data?.total ?? 0; // backend'den toplam ürün sayısı
+  const totalPages = Math.ceil(total / limit);
+
+  const { categoryId } = useParams();
+  const dispatch = useDispatch();
+
+  const handlePageChange = (newPage) => {
+    dispatch(setOffset((newPage - 1) * limit));
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    console.log("categoryId URL'den:", categoryId);
+    dispatch(setCategory(categoryId ?? null));
+  }, [categoryId]);
 
   const getPageNumbers = (currentPage, totalPages) => {
     // Toplam sayfa 7 veya altındaysa hepsini göster
@@ -130,7 +143,7 @@ const ShopPage = () => {
           <div className="flex flex-wrap -mx-4">
             {/* -mx-4: Kenarlardaki boşluğu dengelemek için */}
 
-            {visibleProducts.map((product) => (
+            {products.map((product) => (
               <div
                 key={product.id}
                 className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8"
@@ -147,7 +160,7 @@ const ShopPage = () => {
           <div className="flex flex-col -mx-4 items-center justify-center ">
             {/* -mx-4: Kenarlardaki boşluğu dengelemek için */}
 
-            {visibleProducts.map((product) => (
+            {products.map((product) => (
               <div
                 key={product.id}
                 className="w-full items-center justify-center  px-4 mb-8 pb-4 border-b-2"
@@ -158,12 +171,11 @@ const ShopPage = () => {
           </div>
         )}
 
-        {/* Pagination (Sayfalama) */}
+        {/* Pagination */}
         <div className="flex justify-center items-center gap-2 mt-12">
           <button
             onClick={() => {
-              setPage(1);
-              window.scrollTo(0, 0);
+              handlePageChange(1);
             }}
             disabled={page === 1}
             className="px-4 py-2 border disabled:opacity-30"
@@ -181,10 +193,7 @@ const ShopPage = () => {
                   <span className="px-2 text-text-secondary">...</span>
                 )}
                 <button
-                  onClick={() => {
-                    setPage(pageNum);
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() => handlePageChange(pageNum)}
                   className={`px-4 py-2 border cursor-pointer ${
                     page === pageNum
                       ? "bg-primary text-white"
@@ -198,10 +207,7 @@ const ShopPage = () => {
           })}
 
           <button
-            onClick={() => {
-              setPage((prev) => Math.min(prev + 1, totalPages));
-              window.scrollTo(0, 0);
-            }}
+            onClick={() => handlePageChange(Math.min(page + 1, totalPages))}
             disabled={page === totalPages}
             className="px-4 py-2 border disabled:opacity-30"
           >

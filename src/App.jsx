@@ -46,9 +46,14 @@ const App = () => {
             <About></About>
           </Layout>
         </Route>
-        <Route path="/shop">
+        <Route path="/shop/:gender/:categoryName/:categoryId">
           <Layout>
             <ShopPage></ShopPage>
+          </Layout>
+        </Route>
+        <Route path="/shop">
+          <Layout>
+            <ShopPage />
           </Layout>
         </Route>
         <Route path="/product/:productId">

@@ -76,13 +76,14 @@ export default function Login() {
                 required: "Şifre zorunlu",
                 minLength: {
                   value: 5,
-                  message: "Şifre en az 5 haneli olmalı",
+                  message: "Şifre en az 8 haneli olmalı",
                 },
               })}
               placeholder="Password*"
               name="password"
               className="border-1 border-border bg-bg-gray rounded-md md:w-[450px] w-full py-2 px-2"
             />
+            {errors.password && <p>{errors.password.message}</p>}
           </div>
           <div className="flex flex-row gap-5 justify-end">
             <label htmlFor="rememberMe">Remember Me</label>

@@ -86,14 +86,19 @@ export default function Register() {
               type="password"
               {...register("password", {
                 required: "Şifre zorunlu",
+                pattern: {
+                  value: /(?=.*\d)(?=.*[A-Z]).{6,}/,
+                  message: "Geçerli bir şifre girin",
+                },
                 minLength: {
-                  value: 5,
-                  message: "Şifre en az 5 haneli olmalı",
+                  value: 8,
+                  message: "Şifre en az 8 haneli olmalı",
                 },
               })}
               placeholder="Password*"
               className="border-1 border-border bg-bg-gray rounded-md md:w-[450px] w-full py-2 px-2"
             />
+            {errors.password && <p>{errors.password.message}</p>}
           </div>
 
           <div className="flex justify-between gap-1 flex-col">
