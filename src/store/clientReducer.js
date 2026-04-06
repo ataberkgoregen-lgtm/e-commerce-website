@@ -1,4 +1,5 @@
 import {
+  LOGOUT_USER,
   SET_LANGUAGE,
   SET_ROLES,
   SET_THEME,
@@ -7,7 +8,7 @@ import {
 
 const initialClientState = {
   user: {
-    token: "",
+    token: localStorage.getItem("token") || "",
     name: "",
     email: "",
     role_id: "",
@@ -34,6 +35,11 @@ export const clientReducer = (state = initialClientState, action) => {
       return {
         ...state,
         theme: action.payload,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        user: { token: "", name: "", email: "", role_id: "" },
       };
     default:
       return state;

@@ -15,8 +15,12 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { useCategories } from "../hooks/useCategories";
+import { useDispatch } from "react-redux";
+import { fetchLogout } from "../store/index";
+import MD5 from "crypto-js/md5";
+import { toast } from "react-toastify";
 
 export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
@@ -26,10 +30,22 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.client.user);
+
+  const gravatarUrl = user.email
+    ? `https://www.gravatar.com/avatar/${MD5(user.email.trim().toLowerCase())}?d=identicon`
+    : null;
 
   const hideCampaigne =
     location.pathname === "/about" || location.pathname === "/team";
 
+  function setLog() {
+    dispatch(fetchLogout());
+    toast.success("Başarıyla çıkış yaptınız");
+    history.push("/");
+  }
   return (
     <nav>
       {!hideCampaigne && (
@@ -69,23 +85,40 @@ export function Navbar() {
           <h3 className="font-bold pl-9.5 text-2xl order-1">Bandage</h3>
           <div className="flex gap-7.5 pr-7.5 items-center text-text-primary md:text-primary flex-row w-auto  justify-end order-2 md:order-3 shrink-0 ">
             <div className="md:flex flex-row gap-1.5 font-medium hidden justify-center items-center">
-              {!hideCampaigne && (
-                <div>
-                  <User />{" "}
+              {user.token ? (
+                // ✅ Giriş yapıldıysa
+                <div className="flex items-center gap-2">
+                  <img
+                    src={gravatarUrl}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span>{user.name}</span>
+                  <button
+                    onClick={setLog}
+                    className="text-sm text-red-500 cursor-pointer font-bold"
+                  >
+                    Logout
+                  </button>
                 </div>
-              )}
-              <a href="/login" className="font-bold cursor-pointer">
-                Login
-              </a>{" "}
-              {hideCampaigne && (
-                <div className="text-white bg-primary px-7 py-3 rounded-md flex flex-row cursor-pointer ml-4">
-                  Become a member <ArrowRight />
-                </div>
-              )}
-              {!hideCampaigne && (
-                <div>
-                  / <a href="">Register</a>{" "}
-                </div>
+              ) : (
+                // ✅ Giriş yapılmadıysa
+                <>
+                  {!hideCampaigne && <User />}
+                  <a href="/login" className="font-bold cursor-pointer">
+                    Login
+                  </a>
+                  {hideCampaigne && (
+                    <div className="text-white bg-primary px-7 py-3 rounded-md flex flex-row cursor-pointer ml-4">
+                      Become a member <ArrowRight />
+                    </div>
+                  )}
+                  {!hideCampaigne && (
+                    <div>
+                      / <a href="/register">Register</a>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
@@ -93,9 +126,10 @@ export function Navbar() {
               <div className="flex flex-row gap-5">
                 <Search />
                 <ShoppingCart />
-                <Heart className="hidden md:flex" />{" "}
+                <Heart className="hidden md:flex" />
               </div>
             )}
+
             <Menu
               className="flex md:hidden cursor-pointer "
               onClick={() => {

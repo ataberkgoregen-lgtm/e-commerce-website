@@ -6,18 +6,18 @@ import logger from "redux-logger";
 import { thunk } from "redux-thunk";
 import { productReducer } from "./productReducer";
 import { reducer } from "./reducer";
-// import { clientReducer } from "./clientReducer";
+import { clientReducer } from "./clientReducer";
 // import { cartReducer } from "./cartReducer";
 import api from "../api/axios";
-import { setUser } from "./clientActions";
+import { setUser, logoutUser } from "./clientActions";
 
 // ============================================================
-// ROOT REDUCER
+// ROOT REDUCER -- Combine Reducers
 // ============================================================
 const rootReducer = combineReducers({
   reducer: reducer,
   product: productReducer,
-  // client: clientReducer,
+  client: clientReducer,
   // cart: cartReducer,
 });
 
@@ -30,24 +30,32 @@ export const myStore = createStore(rootReducer, applyMiddleware(thunk, logger));
 // THUNK ACTION CREATORS
 // ============================================================
 
-// ----- LOGIN -----
-export const fetchLogin = (credentials) => async (dispatch) => {
-  try {
-    const { data } = await api.post("/login", credentials);
-    // dispatch(loginUser({ name: data.name, email: data.email, avatar: data.avatar, token: data.token }));
-    // — clientReducer eklenince açılacak
+// ----- LOGOUT -----
+export const fetchLogout = () => (dispatch) => {
+  localStorage.removeItem("token");
+  dispatch(logoutUser());
+};
 
-    dispatch(
-      setUser({
-        token: data.token,
-        name: data.name,
-        email: data.email,
-        role_id: data.role_id,
-      }),
-    );
-  } catch (err) {
-    console.error(err);
-  }
+// ----- LOGIN -----
+export const fetchLogin = (credentials, rememberMe) => async (dispatch) => {
+  return api
+    .post("/login", credentials)
+    .then((response) => {
+      dispatch(
+        setUser({
+          token: response.data.token,
+          name: response.data.name,
+          email: response.data.email,
+          role_id: response.data.role_id,
+        }),
+      );
+      if (rememberMe) {
+        localStorage.setItem("token", response.data.token);
+      }
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
 
 // ----- REGISTER -----

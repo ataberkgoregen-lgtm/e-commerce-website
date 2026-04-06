@@ -7,6 +7,8 @@ import Contact from "./components/contact";
 import About from "./components/about";
 import BlogPage from "./components/blog";
 import Team from "./components/teams.jsx";
+import Login from "./components/login.jsx";
+import Register from "./components/register.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,16 @@ const App = () => {
         </Route>
         <Route path="/contact">
           <Contact></Contact>
+        </Route>
+        <Route path="/login">
+          <Layout>
+            <Login></Login>
+          </Layout>
+        </Route>
+        <Route path="/register">
+          <Layout>
+            <Register></Register>
+          </Layout>
         </Route>
         <Route path="/blog">
           <Layout>
