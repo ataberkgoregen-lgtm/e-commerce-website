@@ -105,7 +105,10 @@ export function Navbar() {
                 // ✅ Giriş yapılmadıysa
                 <>
                   {!hideCampaigne && <User />}
-                  <a href="/login" className="font-bold cursor-pointer">
+                  <a
+                    href={`/login?redirect=${window.location.pathname}`}
+                    className="font-bold cursor-pointer "
+                  >
                     Login
                   </a>
                   {hideCampaigne && (

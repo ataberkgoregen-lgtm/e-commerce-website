@@ -8,9 +8,11 @@ import {
 
 const initialClientState = {
   user: {
-    token: localStorage.getItem("token") || "",
-    name: "",
-    email: "",
+    token:
+      localStorage.getItem("token") || sessionStorage.getItem("token") || "",
+    name: localStorage.getItem("name") || sessionStorage.getItem("name") || "",
+    email:
+      localStorage.getItem("email") || sessionStorage.getItem("email") || "",
     role_id: "",
   },
   addressList: [],

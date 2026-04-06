@@ -3,12 +3,10 @@ import { fetchLogin } from "../store/index";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useState } from "react";
+
 export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const from = location.state?.from || "/";
 
   const {
     register,
@@ -33,8 +31,11 @@ export default function Login() {
       ),
     )
       .then(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const targetPath = queryParams.get("redirect") || "/";
+
         toast.success("Giriş başarılı!");
-        history.push(from);
+        history.push(targetPath);
       })
       .catch((err) => {
         if (!err.response.data.message) {

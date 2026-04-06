@@ -33,6 +33,7 @@ export const myStore = createStore(rootReducer, applyMiddleware(thunk, logger));
 // ----- LOGOUT -----
 export const fetchLogout = () => (dispatch) => {
   localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
   dispatch(logoutUser());
 };
 
@@ -51,6 +52,12 @@ export const fetchLogin = (credentials, rememberMe) => async (dispatch) => {
       );
       if (rememberMe) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("email", response.data.email);
+      } else {
+        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("name", response.data.name);
+        sessionStorage.setItem("email", response.data.email);
       }
     })
     .catch((err) => {
