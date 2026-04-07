@@ -1,10 +1,14 @@
 import { useParams, useHistory } from "react-router-dom";
 import useProductDetail from "../hooks/useProductDetail";
+import { addToCart } from "../store";
+import { useDispatch } from "react-redux";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
   const history = useHistory();
+
   const { data, isLoading, error } = useProductDetail(productId);
+  const dispatch = useDispatch();
 
   if (isLoading)
     return <div className="flex justify-center py-20">Yükleniyor...</div>;
@@ -85,7 +89,10 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="mt-12 flex gap-4">
-            <button className="flex-1 bg-primary text-white py-5 px-8 rounded-xl font-bold text-lg hover:shadow-xl hover:bg-primary/90 transition-all active:scale-95">
+            <button
+              className="flex-1 bg-primary text-white py-5 px-8 rounded-xl font-bold text-lg hover:shadow-xl hover:bg-primary/90 transition-all active:scale-95"
+              onClick={() => dispatch(addToCart(data))}
+            >
               SEPETE EKLE
             </button>
             <button className="p-5 border-2 border-border rounded-xl hover:bg-gray-50 transition-colors">

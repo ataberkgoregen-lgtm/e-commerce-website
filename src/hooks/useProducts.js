@@ -19,6 +19,7 @@ const useProducts = () => {
           ...(category_id ? { category_id } : {}),
         },
       });
+
       return data;
     },
   });

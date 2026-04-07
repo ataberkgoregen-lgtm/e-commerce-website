@@ -21,14 +21,18 @@ import { useDispatch } from "react-redux";
 import { fetchLogout } from "../store/index";
 import MD5 from "crypto-js/md5";
 import { toast } from "react-toastify";
+import { addToCart } from "../store";
+import { removeToCart } from "../store";
 
 export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
   const navLink = useSelector((store) => store.reducer.navLinks);
   const { data: categories } = useCategories();
 
+  const cart = useSelector((store) => store.cart);
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -127,13 +131,113 @@ export function Navbar() {
             </div>
 
             {!hideCampaigne && (
-              <div className="flex flex-row gap-5">
+              <div className="flex flex-row gap-5 items-center relative">
+                {/* Arama Bileşeni */}
                 <Search />
-                <ShoppingCart />
+
+                {/* Sepet Alanı */}
+                <div className="relative">
+                  {/* Sepet İkonu ve Tetikleyici */}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setCartOpen(!cartOpen)}
+                  >
+                    <ShoppingCart />
+                  </div>
+
+                  {/* Açılır Sepet Menüsü (Dropdown) */}
+                  {cartOpen && (
+                    <div className="absolute top-full right-0 mt-3 w-80 rounded-lg bg-white shadow-2xl z-50 border border-gray-100 p-4">
+                      <div className="flex flex-col">
+                        <h4 className="font-bold text-gray-900 mb-3 pb-2 border-b border-gray-100 text-sm tracking-tight">
+                          Sepetim ({cart.cart.length} Ürün)
+                        </h4>
+
+                        <div className="flex flex-col space-y-3 max-h-64 overflow-y-auto pr-1">
+                          {cart.cart.length > 0 ? (
+                            cart.cart.map((item, index) => (
+                              <div
+                                key={item.product?.id || index}
+                                className="flex items-start gap-3 py-2 px-1 border-b border-gray-50 last:border-none"
+                              >
+                                {/* Ürün Görseli */}
+                                <img
+                                  src={item.product?.images?.[0]?.url}
+                                  className="w-10 h-12 object-cover rounded shadow-sm flex-shrink-0"
+                                  alt={item.product?.name}
+                                />
+
+                                {/* Ürün Detayları */}
+                                <div className="flex flex-col flex-1 min-w-0">
+                                  <span className="truncate text-xs font-semibold text-gray-800">
+                                    {item.product?.name}
+                                  </span>
+                                  <span className="text-[10px] text-gray-500">
+                                    Adet: {item.count}
+                                  </span>
+                                  <span className="text-xs font-bold text-blue-600 mt-1">
+                                    {item.product?.price?.toFixed(2)} TL
+                                  </span>
+                                  <div className="flex flex-row gap-4">
+                                    <button
+                                      className="bg-primary px-3 py-0.2 rounded-md text-white"
+                                      onClick={() =>
+                                        dispatch(addToCart(item.product))
+                                      }
+                                    >
+                                      +
+                                    </button>
+                                    <button
+                                      className="bg-primary px-3 py-0.2 rounded-md text-white"
+                                      onClick={() =>
+                                        dispatch(removeToCart(item.product))
+                                      }
+                                    >
+                                      -
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="text-xs text-gray-400 text-center py-6">
+                              Sepetiniz boş
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Toplam ve Alt Kısım */}
+                        {cart.cart.length > 0 && (
+                          <div className="mt-3 pt-3 border-t border-gray-100">
+                            <div className="flex justify-between items-center mb-3">
+                              <span className="text-xs font-medium text-gray-600">
+                                Toplam:
+                              </span>
+                              <span className="text-sm font-bold text-gray-900">
+                                {cart.cart
+                                  .reduce(
+                                    (acc, curr) =>
+                                      acc + curr.product.price * curr.count,
+                                    0,
+                                  )
+                                  .toFixed(2)}{" "}
+                                TL
+                              </span>
+                            </div>
+                            <button className="w-full bg-orange-500 text-white text-xs font-bold py-2 rounded hover:bg-orange-600 transition-colors">
+                              Sepete Git
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Favoriler Bileşeni */}
                 <Heart className="hidden md:flex" />
               </div>
             )}
-
             <Menu
               className="flex md:hidden cursor-pointer "
               onClick={() => {
