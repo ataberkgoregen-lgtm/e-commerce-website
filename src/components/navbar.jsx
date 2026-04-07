@@ -23,7 +23,7 @@ import MD5 from "crypto-js/md5";
 import { toast } from "react-toastify";
 import { addToCart } from "../store";
 import { removeToCart } from "../store";
-
+import { Link } from "react-router-dom";
 export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
   const navLink = useSelector((store) => store.reducer.navLinks);
@@ -134,15 +134,15 @@ export function Navbar() {
               <div className="flex flex-row gap-5 items-center relative">
                 {/* Arama Bileşeni */}
                 <Search />
-
                 {/* Sepet Alanı */}
-                <div className="relative">
+                <div className="relative flex flex-row gap-2 justify-center items-center">
+                  <ShoppingCart />
                   {/* Sepet İkonu ve Tetikleyici */}
                   <div
                     className="cursor-pointer"
                     onClick={() => setCartOpen(!cartOpen)}
                   >
-                    <ShoppingCart />
+                    <ChevronDown className="size-4 text-gray-400" />
                   </div>
 
                   {/* Açılır Sepet Menüsü (Dropdown) */}
@@ -284,14 +284,14 @@ export function Navbar() {
                               {categories
                                 .filter((cat) => cat.gender === "k")
                                 .map((cat) => (
-                                  <a
+                                  <Link
                                     key={cat.id}
-                                    href={`/shop/${cat.gender}/${cat.code}/${cat.id}`}
+                                    to={`/shop/${cat.gender}/${cat.title}/${cat.id}`}
                                     onClick={() => setShopOpen(false)}
                                     className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
                                   >
                                     {cat.title}
-                                  </a>
+                                  </Link>
                                 ))}
                             </div>
 
@@ -306,14 +306,14 @@ export function Navbar() {
                               {categories
                                 .filter((cat) => cat.gender === "e")
                                 .map((cat) => (
-                                  <a
+                                  <Link
                                     key={cat.id}
-                                    href={`/shop/${cat.gender}/${cat.code}/${cat.id}`}
+                                    to={`/shop/${cat.gender}/${cat.title}/${cat.id}`}
                                     onClick={() => setShopOpen(false)}
                                     className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
                                   >
                                     {cat.title}
-                                  </a>
+                                  </Link>
                                 ))}
                             </div>
                           </div>

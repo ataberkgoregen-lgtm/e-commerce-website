@@ -5,6 +5,7 @@ import { ChevronRight, LayoutGrid, ListChecks } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setCategory } from "../store/productActions";
+import { setSort, setFilter } from "../store/productActions";
 
 const ShopPage = () => {
   const [page, setPage] = useState(1);
@@ -12,7 +13,8 @@ const ShopPage = () => {
   const shopPage = useSelector((item) => item.reducer.shop);
   const [layout, setLayout] = useState(true);
   const { data, isLoading, isError } = useProducts();
-
+  const { sort, filter } = useSelector((state) => state.product);
+  const [filterInput, setFilterInput] = useState("");
   const products = data?.products ?? [];
   const total = data?.total ?? 0; // backend'den toplam ürün sayısı
   const totalPages = Math.ceil(total / limit);
@@ -124,16 +126,29 @@ const ShopPage = () => {
           </div>
           <div className="flex flex-row gap-5 flex-wrap">
             <select
+              value={sort}
+              onChange={(e) => dispatch(setSort(e.target.value))}
               name=""
               id=""
               className="bg-bg-gray text-center px-1 py-4 border-1 border-border rounded-md font-light"
             >
-              <option value="pop">Popularity</option>
-              <option value="newes">Newest</option>
-              <option value="low">Price: Low to High</option>
-              <option value="high">Price: High to Low</option>
+              <option value="">Sıralama Seçin</option>
+              <option value="price:asc">Fiyat: Düşükten Yükseğe</option>
+              <option value="price:desc">Fiyat: Yüksekten Düşüğe</option>
+              <option value="rating:asc">Puan: Düşükten Yükseğe</option>
+              <option value="rating:desc">Puan: Yüksekten Düşüğe</option>
             </select>
-            <button className="bg-primary px-7 py-2 text-white rounded-md font-bold cursor-pointer">
+
+            <input
+              type="text"
+              value={filterInput}
+              onChange={(e) => setFilterInput(e.target.value)}
+              placeholder="Ürün ara..."
+            />
+            <button
+              onClick={() => dispatch(setFilter(filterInput))}
+              className="bg-primary px-7 py-2 text-white rounded-md font-bold cursor-pointer"
+            >
               Filter
             </button>
           </div>
