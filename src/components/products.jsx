@@ -5,31 +5,41 @@ import { ChevronRight, LayoutGrid, ListChecks } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setCategory } from "../store/productActions";
-import { setSort, setFilter } from "../store/productActions";
+import { setSort, setFilter, setOffset } from "../store/productActions";
 
 const ShopPage = () => {
   const [page, setPage] = useState(1);
-  const limit = 12;
+  const { limit, offset } = useSelector((state) => state.product);
   const shopPage = useSelector((item) => item.reducer.shop);
   const [layout, setLayout] = useState(true);
   const { data, isLoading, isError } = useProducts();
   const { sort, filter } = useSelector((state) => state.product);
   const [filterInput, setFilterInput] = useState("");
+
+  const currentPage = Math.floor(offset / limit) + 1;
   const products = data?.products ?? [];
   const total = data?.total ?? 0; // backend'den toplam ürün sayısı
   const totalPages = Math.ceil(total / limit);
 
-  const { categoryId } = useParams();
+  const { categoryId, categoryName } = useParams();
+
   const dispatch = useDispatch();
 
   const handlePageChange = (newPage) => {
-    dispatch(setOffset((newPage - 1) * limit));
-    window.scrollTo(0, 0);
+    if (newPage < 1 || newPage > totalPages) return;
+
+    const newOffset = (newPage - 1) * limit;
+    dispatch(setOffset(newOffset));
+
+    // Sayfa değiştiğinde en üste kaydır
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   useEffect(() => {
-    console.log("categoryId URL'den:", categoryId);
-    dispatch(setCategory(categoryId ?? null));
-  }, [categoryId]);
+    if (categoryId) {
+      dispatch(setCategory(categoryId));
+      dispatch(setFilter(categoryName || ""));
+    }
+  }, [categoryId, categoryName, dispatch]);
 
   const getPageNumbers = (currentPage, totalPages) => {
     // Toplam sayfa 7 veya altındaysa hepsini göster
@@ -192,13 +202,13 @@ const ShopPage = () => {
             onClick={() => {
               handlePageChange(1);
             }}
-            disabled={page === 1}
-            className="px-4 py-2 border disabled:opacity-30"
+            disabled={currentPage === 1}
+            className="px-4 py-2 border disabled:opacity-30 cursor-pointer"
           >
             First
           </button>
 
-          {getPageNumbers(page, totalPages).map((pageNum, i, arr) => {
+          {getPageNumbers(currentPage, totalPages).map((pageNum, i, arr) => {
             // Önceki sayıyla arasında boşluk varsa "..." ekle
             const showDots = i > 0 && pageNum - arr[i - 1] > 1;
 
@@ -210,7 +220,7 @@ const ShopPage = () => {
                 <button
                   onClick={() => handlePageChange(pageNum)}
                   className={`px-4 py-2 border cursor-pointer ${
-                    page === pageNum
+                    currentPage === pageNum
                       ? "bg-primary text-white"
                       : "text-text-secondary"
                   }`}
@@ -222,9 +232,11 @@ const ShopPage = () => {
           })}
 
           <button
-            onClick={() => handlePageChange(Math.min(page + 1, totalPages))}
-            disabled={page === totalPages}
-            className="px-4 py-2 border disabled:opacity-30"
+            onClick={() =>
+              handlePageChange(Math.min(currentPage + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 border disabled:opacity-30 cursor-pointer"
           >
             Next
           </button>

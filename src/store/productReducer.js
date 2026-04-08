@@ -10,7 +10,7 @@ import {
 } from "./productActions";
 
 const initialProductState = {
-  limit: 36,
+  limit: 12,
   offset: 0,
   filter: "",
   sort: "",

@@ -10,14 +10,18 @@ const useProducts = () => {
   return useQuery({
     queryKey: ["products", limit, offset, filter, sort, category_id], // limit/offset/filter/sort/category_id değişince otomatik yeni istek atar
     queryFn: async () => {
-      console.log("İstek atılıyor:", { limit, offset, filter, category_id });
+      const numericId = category_id ? Number(category_id) : null;
+
+      const finalId = numericId > 5 ? null : numericId;
+      console.log("İstek atılıyor1:", { filter, finalId });
+      console.log("İstek atılıyor2:", { limit, offset, filter, finalId });
       const { data } = await api.get("/products", {
         params: {
           limit,
           offset,
-          ...(filter ? { filter } : {}),
-          ...(sort ? { sort } : {}),
-          ...(category_id ? { category: Number(category_id) } : {}),
+          ...(filter ? { filter: filter } : {}),
+          ...(sort ? { sort: sort } : {}),
+          ...(category_id ? { category: finalId } : {}),
         },
       });
 
