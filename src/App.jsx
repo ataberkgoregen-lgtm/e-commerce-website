@@ -46,19 +46,19 @@ const App = () => {
             <About></About>
           </Layout>
         </Route>
+        <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
+          <Layout>
+            <ProductDetailPage />
+          </Layout>
+        </Route>
         <Route path="/shop/:gender/:categoryName/:categoryId">
           <Layout>
-            <ShopPage></ShopPage>
+            <ShopPage />
           </Layout>
         </Route>
         <Route path="/shop">
           <Layout>
             <ShopPage />
-          </Layout>
-        </Route>
-        <Route path="/product/:productId">
-          <Layout>
-            <ProductDetailPage />
           </Layout>
         </Route>
       </Switch>

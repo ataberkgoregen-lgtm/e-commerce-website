@@ -21,7 +21,7 @@ const ShopPage = () => {
   const total = data?.total ?? 0; // backend'den toplam ürün sayısı
   const totalPages = Math.ceil(total / limit);
 
-  const { categoryId, categoryName } = useParams();
+  const { categoryId, categoryName, gender } = useParams();
 
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const ShopPage = () => {
     dispatch(setOffset(newOffset));
 
     // Sayfa değiştiğinde en üste kaydır
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 20, behavior: "smooth" });
   };
   useEffect(() => {
     if (categoryId) {
@@ -177,7 +177,13 @@ const ShopPage = () => {
                sm:w-1/2: Küçük ekranlarda 2 tane
                lg:w-1/4: Geniş ekranlarda 4 tane (12 / 4 = 3 satır oluşur)
             */}
-                <ProductCard product={product} layout={layout} />
+                <ProductCard
+                  product={product}
+                  layout={layout}
+                  gender={gender}
+                  categoryName={categoryName}
+                  categoryId={categoryId}
+                />
               </div>
             ))}
           </div>
@@ -190,7 +196,13 @@ const ShopPage = () => {
                 key={product.id}
                 className="w-full items-center justify-center  px-4 mb-8 pb-4 border-b-2"
               >
-                <ProductCard product={product} layout={layout} />
+                <ProductCard
+                  product={product}
+                  layout={layout}
+                  gender={gender}
+                  categoryName={categoryName}
+                  categoryId={categoryId}
+                />
               </div>
             ))}
           </div>

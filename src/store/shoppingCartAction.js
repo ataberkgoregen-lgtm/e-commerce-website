@@ -1,9 +1,10 @@
 export const SET_CART = "SET_CART";
 export const SET_PAYMENT = "SET_PAYMENT";
 export const SET_ADDRESS = "SET_ADDRESS";
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-
+export const ADD_FAV = "ADD_FAV";
 export const setCart = (item) => ({ type: SET_CART, payload: item });
+
+export const setFav = (item) => ({ type: ADD_FAV, payload: item });
 
 export const setPayment = (payment) => ({
   type: SET_PAYMENT,

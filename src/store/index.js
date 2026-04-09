@@ -10,7 +10,7 @@ import { clientReducer } from "./clientReducer";
 import { shoppingCartReducer } from "./shoppingCartReducer";
 import api from "../api/axios";
 import { setUser, logoutUser } from "./clientActions";
-import { setCart } from "./shoppingCartAction";
+import { setCart, setFav } from "./shoppingCartAction";
 
 // ============================================================
 // ROOT REDUCER -- Combine Reducers
@@ -94,7 +94,7 @@ export const addToCart = (product) => (dispatch, getState) => {
   } else {
     updatedCart = [...cart, { product, count: 1 }]; // Dizinin içine eleman ekleme işlemini yap
   }
-  sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
   dispatch(setCart(updatedCart));
 };
 
@@ -114,6 +114,45 @@ export const removeToCart = (product) => (dispatch, getState) => {
     updatedCart = cart.filter((item) => item.product.id !== product.id);
   }
 
-  sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
   dispatch(setCart(updatedCart));
+};
+
+export const addToFav = (product) => (dispatch, getState) => {
+  const { fav } = getState().cart;
+  console.log();
+  const existing = fav.find((item) => item.product.id === product.id);
+
+  let updatedFav;
+  if (existing) {
+    updatedFav = fav.map((item) =>
+      item.product.id === product.id
+        ? { ...item, count: item.count + 1 }
+        : item,
+    );
+  } else {
+    updatedFav = [...fav, { product, count: 1 }]; // Dizinin içine eleman ekleme işlemini yap
+  }
+  localStorage.setItem("fav", JSON.stringify(updatedFav));
+  dispatch(setFav(updatedFav));
+};
+
+export const removeToFav = (product) => (dispatch, getState) => {
+  const { fav } = getState().cart;
+
+  const existing = fav.find((item) => item.product.id === product.id);
+
+  let updatedFav;
+  if (existing && existing.count > 1) {
+    updatedFav = fav.map((item) =>
+      item.product.id === product.id
+        ? { ...item, count: item.count - 1 }
+        : item,
+    );
+  } else {
+    updatedFav = fav.filter((item) => item.product.id !== product.id);
+  }
+
+  localStorage.setItem("fav", JSON.stringify(updatedFav));
+  dispatch(setFav(updatedFav));
 };

@@ -22,7 +22,7 @@ import { fetchLogout } from "../store/index";
 import MD5 from "crypto-js/md5";
 import { toast } from "react-toastify";
 import { addToCart } from "../store";
-import { removeToCart } from "../store";
+import { removeToCart, removeToFav } from "../store";
 import { Link } from "react-router-dom";
 export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
@@ -30,14 +30,17 @@ export function Navbar() {
   const { data: categories } = useCategories();
 
   const cart = useSelector((store) => store.cart);
+  const fav = useSelector((store) => store.cart.fav);
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [favOpen, setFavOpen] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.client.user);
 
+  console.log(fav);
   const gravatarUrl = user.email
     ? `https://www.gravatar.com/avatar/${MD5(user.email.trim().toLowerCase())}?d=identicon`
     : null;
@@ -136,7 +139,12 @@ export function Navbar() {
                 <Search />
                 {/* Sepet Alanı */}
                 <div className="relative flex flex-row gap-2 justify-center items-center">
-                  <ShoppingCart />
+                  <ShoppingCart />{" "}
+                  <span>
+                    {cart.cart.reduce((acc, item) => {
+                      return acc + item.count;
+                    }, 0)}
+                  </span>
                   {/* Sepet İkonu ve Tetikleyici */}
                   <div
                     className="cursor-pointer"
@@ -144,13 +152,16 @@ export function Navbar() {
                   >
                     <ChevronDown className="size-4 text-gray-400" />
                   </div>
-
                   {/* Açılır Sepet Menüsü (Dropdown) */}
                   {cartOpen && (
                     <div className="absolute top-full right-0 mt-3 w-80 rounded-lg bg-white shadow-2xl z-50 border border-gray-100 p-4">
                       <div className="flex flex-col">
                         <h4 className="font-bold text-gray-900 mb-3 pb-2 border-b border-gray-100 text-sm tracking-tight">
-                          Sepetim ({cart.cart.length} Ürün)
+                          Sepetim ({" "}
+                          {cart.cart.reduce((acc, item) => {
+                            return acc + item.count;
+                          }, 0)}{" "}
+                          Ürün)
                         </h4>
 
                         <div className="flex flex-col space-y-3 max-h-64 overflow-y-auto pr-1">
@@ -234,8 +245,76 @@ export function Navbar() {
                   )}
                 </div>
 
-                {/* Favoriler Bileşeni */}
-                <Heart className="hidden md:flex" />
+                <Heart
+                  className="md:flex cursor-pointer"
+                  onClick={() => setFavOpen(!favOpen)}
+                />
+                {favOpen && (
+                  <div className="absolute top-full right-0 mt-3 w-80 rounded-lg bg-white shadow-2xl z-50 border border-gray-100 p-4">
+                    <div className="flex flex-col">
+                      <h4 className="font-bold text-gray-900 mb-3 pb-2 border-b border-gray-100 text-sm tracking-tight">
+                        Favorilerim ❤️({" "}
+                        {fav.reduce((acc, item) => {
+                          return acc + item.count;
+                        }, 0)}{" "}
+                        Ürün)
+                      </h4>
+
+                      <div className="flex flex-col space-y-3 max-h-64 overflow-y-auto pr-1">
+                        {fav.length > 0 ? (
+                          fav.map((item, index) => (
+                            <div
+                              key={item.product?.id || index}
+                              className="flex items-start gap-3 py-2 px-1 border-b border-gray-50 last:border-none"
+                            >
+                              {/* Ürün Görseli */}
+                              <img
+                                src={item.product?.images?.[0]?.url}
+                                className="w-10 h-12 object-cover rounded shadow-sm flex-shrink-0"
+                                alt={item.product?.name}
+                              />
+
+                              {/* Ürün Detayları */}
+                              <div className="flex flex-col flex-1 min-w-0">
+                                <span className="truncate text-xs font-semibold text-gray-800">
+                                  {item.product?.name}
+                                </span>
+                                <span className="text-[10px] text-gray-500">
+                                  Adet: {item.count}
+                                </span>
+                                <span className="text-xs font-bold text-blue-600 mt-1">
+                                  {item.product?.price?.toFixed(2)} TL
+                                </span>
+                                <div className="flex flex-row gap-4 text-sm pt-2">
+                                  <button
+                                    className="bg-primary px-3 py-0.2 rounded-md text-white"
+                                    onClick={() =>
+                                      dispatch(addToCart(item.product))
+                                    }
+                                  >
+                                    Sepete Ekle
+                                  </button>
+                                  <button
+                                    className="bg-primary px-3 py-0.2 rounded-md text-white"
+                                    onClick={() =>
+                                      dispatch(removeToFav(item.product))
+                                    }
+                                  >
+                                    Favoriden Çıkart
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          <p className="text-xs text-gray-400 text-center py-6">
+                            Favori'de Ürün Yok
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
             <Menu
@@ -286,7 +365,7 @@ export function Navbar() {
                                 .map((cat) => (
                                   <Link
                                     key={cat.id}
-                                    to={`/shop/${cat.gender}/${cat.title}/${cat.id}`}
+                                    to={`/shop/${cat.gender === "k" ? "kadin" : "erkek"}/${cat.title}/${cat.id}`}
                                     onClick={() => setShopOpen(false)}
                                     className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
                                   >
@@ -308,7 +387,7 @@ export function Navbar() {
                                 .map((cat) => (
                                   <Link
                                     key={cat.id}
-                                    to={`/shop/${cat.gender}/${cat.title}/${cat.id}`}
+                                    to={`/shop/${cat.gender === "k" ? "kadin" : "erkek"}/${cat.title}/${cat.id}`}
                                     onClick={() => setShopOpen(false)}
                                     className="py-2 px-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded transition-colors"
                                   >

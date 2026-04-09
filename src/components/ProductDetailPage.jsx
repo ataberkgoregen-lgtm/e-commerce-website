@@ -1,6 +1,6 @@
 import { useParams, useHistory } from "react-router-dom";
 import useProductDetail from "../hooks/useProductDetail";
-import { addToCart } from "../store";
+import { addToCart, addToFav } from "../store";
 import { useDispatch } from "react-redux";
 
 const ProductDetailPage = () => {
@@ -95,7 +95,10 @@ const ProductDetailPage = () => {
             >
               SEPETE EKLE
             </button>
-            <button className="p-5 border-2 border-border rounded-xl hover:bg-gray-50 transition-colors">
+            <button
+              className="p-5 border-2 border-border rounded-xl hover:bg-gray-50 transition-colors"
+              onClick={() => dispatch(addToFav(data))}
+            >
               ❤️
             </button>
           </div>

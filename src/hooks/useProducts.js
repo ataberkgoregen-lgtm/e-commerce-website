@@ -13,8 +13,7 @@ const useProducts = () => {
       const numericId = category_id ? Number(category_id) : null;
 
       const finalId = numericId > 5 ? null : numericId;
-      console.log("İstek atılıyor1:", { filter, finalId });
-      console.log("İstek atılıyor2:", { limit, offset, filter, finalId });
+
       const { data } = await api.get("/products", {
         params: {
           limit,

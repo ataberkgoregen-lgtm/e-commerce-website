@@ -1,11 +1,26 @@
 import { useHistory } from "react-router-dom";
 
-const ProductCard = ({ product, layout }) => {
+const ProductCard = ({ product, layout, gender, categoryName, categoryId }) => {
   const history = useHistory();
+  const handleClick = () => {
+    const productNameSlug = product.name
+      .toLowerCase()
+      .replace(/\s+/g, "-") // boşlukları tire yap
+      .replace(/[^a-z0-9-]/g, ""); // özel karakterleri kaldır
 
+    if (gender && categoryName && categoryId) {
+      // Kategori seçilmişse tam URL
+      history.push(
+        `/shop/${gender}/${categoryName}/${categoryId}/${productNameSlug}/${product.id}`,
+      );
+    } else {
+      // Genel shop'tan geliyorsa kısa URL
+      history.push(`/shop/tumu/tumu/0/${productNameSlug}/${product.id}`);
+    }
+  };
   return (
     <div
-      onClick={() => history.push(`/product/${product.id}`)}
+      onClick={handleClick}
       className={`cursor-pointer group flex ${layout ? "flex-col" : "flex-row"}`}
     >
       <div
