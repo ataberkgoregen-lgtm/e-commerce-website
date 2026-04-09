@@ -96,7 +96,7 @@ const ProductDetailPage = () => {
               SEPETE EKLE
             </button>
             <button
-              className="p-5 border-2 border-border rounded-xl hover:bg-gray-50 transition-colors"
+              className="p-5 border-2 border-border rounded-xl hover:bg-gray-50 transition-colors cursor-pointer active:scale-95"
               onClick={() => dispatch(addToFav(data))}
             >
               ❤️

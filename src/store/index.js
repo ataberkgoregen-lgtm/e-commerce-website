@@ -137,6 +137,15 @@ export const removeToCart = (product) => (dispatch, getState) => {
   dispatch(setCart(updatedCart));
 };
 
+export const emptyToCart = (product) => (dispatch, getState) => {
+  const { cart } = getState().cart;
+
+  const updatedCart = cart.filter((item) => item.product.id !== product.id);
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+  dispatch(setCart(updatedCart));
+};
+
 export const addToFav = (product) => (dispatch, getState) => {
   const { fav } = getState().cart;
   console.log();

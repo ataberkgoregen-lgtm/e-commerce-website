@@ -91,8 +91,8 @@ export function Navbar() {
       <div className="md:h-[58px] h-fit flex flex-col md:flex-row justify-between mt-3 mb-2 ">
         <div className="flex flex-row flex-wrap md:flex-nowrap xl:gap-[119px] items-center  w-full justify-between">
           <h3 className="font-bold pl-9.5 text-2xl order-1">Bandage</h3>
-          <div className="flex gap-7.5 pr-7.5 items-center text-text-primary md:text-primary flex-row w-auto  justify-end order-2 md:order-3 shrink-0 ">
-            <div className="md:flex flex-row gap-1.5 font-medium hidden justify-center items-center">
+          <div className="flex gap-7.5 pr-7.5 items-center text-text-primary md:text-primary md:flex-row w-auto  justify-end order-2 md:order-3 flex-col shrink-0 ">
+            <div className="md:flex flex-row gap-1.5 font-medium flex justify-center items-center">
               {user.token ? (
                 // ✅ Giriş yapıldıysa
                 <div className="flex items-center gap-2">
@@ -134,11 +134,11 @@ export function Navbar() {
             </div>
 
             {!hideCampaigne && (
-              <div className="flex flex-row gap-5 items-center relative">
+              <div className="flex flex-row gap-1 items-center relative flex-wrap">
                 {/* Arama Bileşeni */}
                 <Search />
                 {/* Sepet Alanı */}
-                <div className="relative flex flex-row gap-2 justify-center items-center">
+                <div className="relative flex flex-row gap-1 flex-wrap justify-center items-center">
                   <a
                     href="/cart
                   "
@@ -157,6 +157,12 @@ export function Navbar() {
                   >
                     <ChevronDown className="size-4 text-gray-400" />
                   </div>
+                  <Menu
+                    className="flex md:hidden cursor-pointer "
+                    onClick={() => {
+                      return setOpen(!open);
+                    }}
+                  />
                   {/* Açılır Sepet Menüsü (Dropdown) */}
                   {cartOpen && (
                     <div className="absolute top-full right-0 mt-3 w-80 rounded-lg bg-white shadow-2xl z-50 border border-gray-100 p-4">
@@ -241,7 +247,7 @@ export function Navbar() {
                               </span>
                             </div>
                             <a href="/cart" className="cursor-pointer">
-                              <button className="w-full bg-orange-500 text-white text-xs font-bold py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+                              <button className="w-full bg-orange-500 text-white text-xs font-bold py-2 rounded hover:bg-orange-600 transition-colors">
                                 Sepete Git
                               </button>
                             </a>
@@ -324,12 +330,6 @@ export function Navbar() {
                 )}
               </div>
             )}
-            <Menu
-              className="flex md:hidden cursor-pointer "
-              onClick={() => {
-                return setOpen(!open);
-              }}
-            />
           </div>
           <div
             className={`transition-all duration-300 order-3 md:order-2 w-full md:w-auto md:max-h-full md:opacity-100 md:overflow-visible ${
