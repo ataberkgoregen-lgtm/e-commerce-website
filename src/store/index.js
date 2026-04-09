@@ -10,7 +10,7 @@ import { clientReducer } from "./clientReducer";
 import { shoppingCartReducer } from "./shoppingCartReducer";
 import api from "../api/axios";
 import { setUser, logoutUser } from "./clientActions";
-import { setCart, setFav } from "./shoppingCartAction";
+import { setCart, setFav, setCheck } from "./shoppingCartAction";
 
 // ============================================================
 // ROOT REDUCER -- Combine Reducers
@@ -79,6 +79,25 @@ export const fetchRegister = (credentials) => async (dispatch) => {
   }
 };
 
+// -------- CART ----------
+// product, ürün gelir. Thunk içinde dispatch ve getState'i kullanacağımız için bunları çekiyoruz.
+
+export const setChecked = (product) => (dispatch, getState) => {
+  const { cart } = getState().cart;
+
+  const existing = cart.find((item) => item.product.id === product.id);
+
+  let updatedCheck;
+  if (existing) {
+    updatedCheck = cart.map((item) =>
+      item.product.id === product.id
+        ? { ...item, checked: !item.checked }
+        : item,
+    );
+  }
+  dispatch(setCheck(updatedCheck));
+};
+
 export const addToCart = (product) => (dispatch, getState) => {
   const { cart } = getState().cart;
 
@@ -88,11 +107,11 @@ export const addToCart = (product) => (dispatch, getState) => {
   if (existing) {
     updatedCart = cart.map((item) =>
       item.product.id === product.id
-        ? { ...item, count: item.count + 1 }
+        ? { ...item, count: item.count + 1, checked: false }
         : item,
     );
   } else {
-    updatedCart = [...cart, { product, count: 1 }]; // Dizinin içine eleman ekleme işlemini yap
+    updatedCart = [...cart, { product, count: 1, checked: false }]; // Dizinin içine eleman ekleme işlemini yap
   }
   localStorage.setItem("cart", JSON.stringify(updatedCart));
   dispatch(setCart(updatedCart));

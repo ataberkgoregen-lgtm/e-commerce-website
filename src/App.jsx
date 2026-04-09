@@ -9,6 +9,7 @@ import BlogPage from "./components/blog";
 import Team from "./components/teams.jsx";
 import Login from "./components/login.jsx";
 import Register from "./components/register.jsx";
+import ShoppingCart from "./components/shoppingcart.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -44,6 +45,11 @@ const App = () => {
         <Route path="/about">
           <Layout>
             <About></About>
+          </Layout>
+        </Route>
+        <Route path="/cart">
+          <Layout>
+            <ShoppingCart></ShoppingCart>
           </Layout>
         </Route>
         <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">

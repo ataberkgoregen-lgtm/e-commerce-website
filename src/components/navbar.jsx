@@ -21,8 +21,8 @@ import { useDispatch } from "react-redux";
 import { fetchLogout } from "../store/index";
 import MD5 from "crypto-js/md5";
 import { toast } from "react-toastify";
-import { addToCart } from "../store";
-import { removeToCart, removeToFav } from "../store";
+
+import { addToCart, removeToCart, removeToFav } from "../store";
 import { Link } from "react-router-dom";
 export function Navbar() {
   const navbar = useSelector((store) => store.reducer.contact);
@@ -139,7 +139,12 @@ export function Navbar() {
                 <Search />
                 {/* Sepet Alanı */}
                 <div className="relative flex flex-row gap-2 justify-center items-center">
-                  <ShoppingCart />{" "}
+                  <a
+                    href="/cart
+                  "
+                  >
+                    <ShoppingCart />
+                  </a>{" "}
                   <span>
                     {cart.cart.reduce((acc, item) => {
                       return acc + item.count;
@@ -235,9 +240,11 @@ export function Navbar() {
                                 TL
                               </span>
                             </div>
-                            <button className="w-full bg-orange-500 text-white text-xs font-bold py-2 rounded hover:bg-orange-600 transition-colors">
-                              Sepete Git
-                            </button>
+                            <a href="/cart" className="cursor-pointer">
+                              <button className="w-full bg-orange-500 text-white text-xs font-bold py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+                                Sepete Git
+                              </button>
+                            </a>
                           </div>
                         )}
                       </div>

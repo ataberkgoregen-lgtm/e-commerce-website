@@ -1,5 +1,20 @@
 import { useHistory } from "react-router-dom";
-
+const StarRating = ({ rating }) => {
+  return (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          className={
+            star <= Math.round(rating) ? "text-yellow-400" : "text-gray-300"
+          }
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
+};
 const ProductCard = ({ product, layout, gender, categoryName, categoryId }) => {
   const history = useHistory();
   const handleClick = () => {
@@ -36,6 +51,7 @@ const ProductCard = ({ product, layout, gender, categoryName, categoryId }) => {
       <div
         className={`text-center py-4 ${layout ? "w-full" : "w-full  px-3 flex flex-col justify-center items-center"}`}
       >
+        <StarRating rating={product.rating} />
         <h3 className="font-bold text-text-primary">{product.name}</h3>
         <p className="text-text-secondary text-sm mt-1">
           {product.description}

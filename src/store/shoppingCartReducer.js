@@ -1,4 +1,5 @@
-import { SET_CART, ADD_FAV } from "./shoppingCartAction";
+import { Check } from "lucide-react";
+import { SET_CART, ADD_FAV, SET_CHECK } from "./shoppingCartAction";
 
 const savedCart = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
@@ -19,6 +20,8 @@ export const shoppingCartReducer = (state = initialState, action) => {
       return { ...state, cart: action.payload };
     case ADD_FAV:
       return { ...state, fav: action.payload };
+    case SET_CHECK:
+      return { ...state, cart: action.payload };
     default:
       return state;
   }
