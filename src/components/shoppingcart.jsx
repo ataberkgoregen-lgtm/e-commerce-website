@@ -13,12 +13,15 @@ export default function ShoppingCart() {
   const shippingFee = 29.99;
 
   const result =
-    parseFloat(total) > 150
-      ? parseFloat(total)
-      : parseFloat(total) + shippingFee;
+    parseFloat(total) === 0
+      ? 0
+      : parseFloat(total) > 150
+        ? parseFloat(total)
+        : parseFloat(total) + shippingFee;
 
   const displayResult = result.toFixed(2);
   const isFreeShipping = parseFloat(total) > 150;
+  const hasItems = parseFloat(total) > 0;
 
   return (
     <div className="w-4/5 flex flex-col lg:flex-row rounded-md m-auto mb-20 mt-10 lg:mt-20 gap-3">
@@ -106,11 +109,14 @@ export default function ShoppingCart() {
             <p className="text-base sm:text-lg">Ürün Toplamı</p>
             <span>{total} TL</span>
           </div>
+
           <div className="flex flex-col gap-3">
-            <div className="flex flex-row justify-between px-2">
-              <p className="text-base sm:text-lg">Kargo Toplam</p>
-              <span>29.99 TL</span>
-            </div>
+            {hasItems && (
+              <div className="flex flex-row justify-between px-2">
+                <p className="text-base sm:text-lg">Kargo Toplam</p>
+                <span>29.99 TL</span>
+              </div>
+            )}
             {isFreeShipping && (
               <div className="flex flex-row justify-between px-2">
                 <p className="w-2/3 text-sm">150 TL ve Üzeri Kargo Bedava</p>
