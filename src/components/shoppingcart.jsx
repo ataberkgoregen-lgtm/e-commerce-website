@@ -68,7 +68,7 @@ export default function ShoppingCart() {
                   </p>
                 </div>
 
-                <div className="flex flex-row items-center text-sm sm:text-base font-bold gap-1 pb-2 sm:pb-0">
+                <div className="flex flex-row flex-wrap items-center text-sm sm:text-base font-bold gap-1 pb-2 sm:pb-0">
                   <button
                     className="bg-primary px-3 py-1 rounded-md text-white"
                     onClick={() => dispatch(addToCart(item.product))}
