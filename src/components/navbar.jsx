@@ -94,39 +94,64 @@ export function Navbar() {
           <div className="flex gap-7.5 pr-7.5 items-center text-text-primary md:text-primary md:flex-row w-auto  justify-end order-2 md:order-3 flex-col shrink-0 ">
             <div className="md:flex flex-row gap-1.5 font-medium flex justify-center items-center">
               {user.token ? (
-                // ✅ Giriş yapıldıysa
-                <div className="flex items-center gap-2">
+                // ✅ Giriş yapıldıysa Dropdown Yapısı
+                <div className="relative group flex items-center gap-2 cursor-pointer py-2">
                   <img
                     src={gravatarUrl}
                     alt={user.name}
                     className="w-8 h-8 rounded-full"
                   />
-                  <span>{user.name}</span>
-                  <button
-                    onClick={setLog}
-                    className="text-sm text-red-500 cursor-pointer font-bold"
-                  >
-                    Logout
-                  </button>
+                  <span className="font-bold text-sm sm:text-base">
+                    {user.name}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className="text-gray-500 transition-transform group-hover:rotate-180"
+                  />
+
+                  {/* --- AÇILIR MENÜ (DROPDOWN) --- */}
+                  <div className="absolute top-full right-0 mt-1 w-48 bg-white border border-gray-100 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
+                    <div className="py-2">
+                      <Link
+                        to="/orders"
+                        className="block px-4 py-2 text-sm text-text-secondary hover:bg-gray-50 no-underline font-semibold"
+                      >
+                        Siparişlerim
+                      </Link>
+                    </div>
+                    <div className="h-[1px] bg-gray-100 my-1"></div>
+                    <button
+                      onClick={setLog}
+                      className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 font-bold border-none bg-transparent cursor-pointer"
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               ) : (
-                // ✅ Giriş yapılmadıysa
+                // ✅ Giriş yapılmadıysa (Aynı kalıyor)
                 <>
-                  {!hideCampaigne && <User />}
-                  <a
-                    href={`/login?redirect=${window.location.pathname}`}
-                    className="font-bold cursor-pointer "
+                  {!hideCampaigne && <User className="hidden md:block" />}
+                  <Link
+                    to={`/login?redirect=${window.location.pathname}`}
+                    className="font-bold cursor-pointer no-underline text-inherit"
                   >
                     Login
-                  </a>
+                  </Link>
                   {hideCampaigne && (
-                    <div className="text-white bg-primary px-7 py-3 rounded-md flex flex-row cursor-pointer ml-4">
-                      Become a member <ArrowRight />
+                    <div className="text-white bg-primary px-7 py-3 rounded-md flex flex-row items-center cursor-pointer ml-4">
+                      Become a member <ArrowRight className="ml-2" />
                     </div>
                   )}
                   {!hideCampaigne && (
-                    <div>
-                      / <a href="/register">Register</a>
+                    <div className="text-sm sm:text-base">
+                      /{" "}
+                      <Link
+                        to="/register"
+                        className="no-underline text-inherit"
+                      >
+                        Register
+                      </Link>
                     </div>
                   )}
                 </>

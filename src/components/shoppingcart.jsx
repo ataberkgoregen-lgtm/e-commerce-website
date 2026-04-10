@@ -1,8 +1,9 @@
 import { Trash } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeToCart, setChecked, emptyToCart } from "../store";
-
+import { useHistory } from "react-router-dom";
 export default function ShoppingCart() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const cart = useSelector((item) => item.cart);
 
@@ -130,7 +131,10 @@ export default function ShoppingCart() {
               <p>Toplam</p>
               <span>{displayResult} TL</span>
             </div>
-            <button className="mt-2 bg-primary-dark w-full sm:w-fit px-4 py-2 m-auto rounded-md text-white cursor-pointer font-bold">
+            <button
+              className="mt-2 bg-primary-dark w-full sm:w-fit px-4 py-2 m-auto rounded-md text-white cursor-pointer font-bold"
+              onClick={() => history.push("/order")}
+            >
               Sepeti Onayla
             </button>
           </div>
